@@ -1,0 +1,19 @@
+# Site settings
+title: CommonDoc
+
+description: >
+  A CLOS framework for representing and converting documents.
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+
+# Variables
+links:
+  org: https://github.com/CommonDoc
+  repo: https://github.com/CommonDoc/common-doc
+
+  # Formats
+  vertex: https://github.com/CommonDoc/vertex
+  parenml: https://github.com/CommonDoc/parenml
+  html: https://github.com/CommonDoc/common-html
