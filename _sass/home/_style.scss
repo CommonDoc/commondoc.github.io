@@ -12,3 +12,23 @@
     font-size: 1.1em;
   }
 }
+
+.libraries {
+
+  h1 {
+    font-size: 3em;
+    font-weight: 400;
+  }
+
+  .library {
+    overflow: auto;
+
+    .logo {
+
+      h2 {
+        font-size: 2.8em;
+        font-weight: 400;
+      }
+    }
+  }
+}

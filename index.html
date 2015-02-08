@@ -8,9 +8,22 @@ layout: default
   <span class="tagline">{{ site.description }}</span>
 </header>
 
-<section class="formats">
-  <h1>Formats</h1>
+<section class="libraries">
+  <h1>Libraries</h1>
 
-  <img class="logo" src="{{ "/assets/img/logo/vertex-inverted.png" | prepend: site.baseurl }}"></img>
-  <img class="logo" src="{{ "/assets/img/logo/parenml-inverted.png" | prepend: site.baseurl }}"></img>
+  <div class="library">
+    <div class="logo">
+      <img src="{{ "/assets/img/logo/vertex-inverted.png" | prepend: site.baseurl }}"></img>
+      <h2><a href="{{ site.links.vertex }}">VerTeX</a></h2>
+    </div>
+    <div class="desc"></div>
+  </div>
+
+  <div class="library">
+    <div class="logo">
+      <img src="{{ "/assets/img/logo/parenml-inverted.png" | prepend: site.baseurl }}"></img>
+      <h2><a href="{{ site.links.parenml }}">ParenML</a></h2>
+    </div>
+    <div class="desc"></div>
+  </div>
 </section>

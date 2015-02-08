@@ -16,3 +16,25 @@
     width: 400px;
   }
 }
+
+section {
+  width: 60%;
+  margin: 0 auto;
+
+  img {
+    float: left;
+  }
+
+  .library {
+    @include row();
+
+    .logo {
+      @include column(4);
+      text-align: center;
+    }
+
+    .desc {
+      @include column(8);
+    }
+  }
+}
