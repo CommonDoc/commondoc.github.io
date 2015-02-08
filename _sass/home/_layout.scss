@@ -1,5 +1,18 @@
 /* Home page layout */
 
 .home {
-  height: 400px;
+  height: 600px;
+  overflow: auto;
+  text-align: center;
+
+  h1 {
+    width: 400px;
+    margin: 10px auto 25px;
+  }
+
+  .tagline {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+  }
 }
