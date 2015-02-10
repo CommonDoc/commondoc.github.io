@@ -17,24 +17,14 @@
   }
 }
 
-section {
+.libraries {
+  @include row();
   width: 60%;
-  margin: 0 auto;
-
-  img {
-    float: left;
-  }
+  margin: 75px auto;
 
   .library {
-    @include row();
+    @include column(6);
 
-    .logo {
-      @include column(4);
-      text-align: center;
-    }
-
-    .desc {
-      @include column(8);
-    }
+    text-align: center;
   }
 }
