@@ -2,13 +2,15 @@
 layout: default
 ---
 
-<header class="home">
-  <img class="logo" src="{{ "/assets/img/logo/common-doc-inverted.png" | prepend: site.baseurl }}"></img>
-  <h1>CommonDoc</h1>
-  <span class="tagline">{{ site.description }}</span>
-</header>
+<div class="home">
+  <header>
+    <img class="logo" src="{{ "/assets/img/logo/common-doc-inverted.png" | prepend: site.baseurl }}"></img>
+    <h1>CommonDoc</h1>
+    <span class="tagline">{{ site.description }}</span>
+  </header>
 
-<ul class="links">
-  <li><a href="{{ site.links.repo }}">Source</a></li>
-  <li><a href="{{ site.links.docs }}">Documentation</a></li>
-</ul>
+  <ul class="links">
+    <li><a href="{{ site.links.repo }}">Source</a></li>
+    <li><a href="{{ site.links.docs }}">Documentation</a></li>
+  </ul>
+</div>
