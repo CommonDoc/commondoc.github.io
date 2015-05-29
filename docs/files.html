@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Files &ndash; CommonDoc
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">CommonDoc » Files</h1>
+  <article>
+    <aside>
+      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+    </aside>
+    <main class="codex-section">
+      <p></p><p>Documents are hardly ever self-contained, and references to external resources
+are necessary and useful for the following reasons:</p><ol><li>We don't want to have to load images to memory just to represent the
+document, and then have to write those images to base-64 when writing the
+document to an output format.</li><li>External resources can reduce errors. For instance, if we're writing an
+article detailing the internals of a piece of code, we can keep the code in an
+external file (along with a script to test it), and simply include bits of it
+using the very flexible
+<a href="https://github.com/CommonDoc/common-doc/tree/master/contrib/include"><code>include</code></a>
+contrib. Then, changes to the file will be automatically reflected in the
+document, reducing duplication and removing the need to manually synchronize
+contents.</li><li>Just about every markup format supports at least referencing images both
+on the local filesystem and on the web, so we have to support that if we are to
+support that markup.</li></ol><p></p><p>CommonDoc has simple support for doing operations with external files. There's a
+special variable, <code>*base-directory*</code>, which basically the directory where all
+relative pathnames referenced in the document begin. Once that variable is
+bound, a couple of functions can be used to manipulate pathnames.</p><h1 id="38-api">API</h1><div class="codex-doc-node codex-variable"><code class="codex-name">*base-directory*</code><div class="codex-docstring">The directory all resources with relative paths are based from. This is
+intended to be bound by a <code>let</code> by specific input formats.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">absolute-path</code><code class="codex-lambda-list">(pathname-or-string)</code><div class="codex-docstring">Take a pathname or namestring. If it's absolute, return it, otherwise, merge
+it with <code>*base-directory*</code>.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">relativize-pathname</code><code class="codex-lambda-list">(pathname)</code><div class="codex-docstring">If a pathname is inside <code>*base-directory*</code>, return a relative
+pathname. Otherwise, return the pathname unchanged.</div></div><h1 id="39-examples">Examples</h1><pre><code class="lisp">(in-package :common-doc.file)
+
+(let ((*base-directory* (user-homedir-pathname)))
+  (absolute-path #p&quot;directory/file.txt&quot;))
+;; =&gt; #p&quot;/home/eudoxia/directory/file.txt&quot;
+</code></pre>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>

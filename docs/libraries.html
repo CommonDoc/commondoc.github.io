@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Libraries &ndash; CommonDoc
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">CommonDoc » Libraries</h1>
+  <article>
+    <aside>
+      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+    </aside>
+    <main class="codex-section">
+      <h1 id="codex
+--">Codex
+<img src="https://travis-ci.org/CommonDoc/codex.svg?branch=master"/><img src="https://coveralls.io/repos/CommonDoc/codex/badge.svg?branch=master"/></h1><a href="https://github.com/CommonDoc/codex"><b>Codex</b></a> is the documentation
+generator used to create this manual.<h1 id="commonhtml
+--">CommonHTML
+<img src="https://travis-ci.org/CommonDoc/common-html.svg?branch=master"/><img src="https://coveralls.io/repos/CommonDoc/common-html/badge.svg?branch=master"/></h1><a href="https://github.com/CommonDoc/common-html"><b>CommonHTML</b></a> is
+CommonDoc's HTML parser and emitter.<h1 id="thorn
+-">Thorn
+<img src="https://travis-ci.org/CommonDoc/thorn.svg?branch=master"/></h1><p><a href="https://github.com/CommonDoc/thorn"><b>Thorn</b></a> is a library for
+inserting special characters into CommonDoc documents.</p><p>Most input methods allow the user to insert characters in different alphabets
+and accented or modified versions of the same, but these are different for
+everyone and often the user will end up looking up a character by name.</p><p>Thorn is a tool for inserting Unicode characters by an ASCII name, the way TeX
+allows users to insert the letters α and β with the commands
+<code>\alpha</code> and <code>\beta</code>, respectively.</p><p>Simply put, it defines a macro, <code>l</code>, that maps a string to a Unicode
+character.</p><h2 id="45-examples">Examples</h2><p></p><p>The following Scriba input:</p><pre><code class="scribe">@begin(quote)
+Hw@l(ae)t! We Gardena in geardagum,
+
+
+@l(th)eodcyninga, @l(th)rym gefrunon,
+
+
+hu @l(eth)a @l(ae)þelingas ellen fremedon.
+
+
+Oft Scyld Scefing scea@l(th)ena @l(th)reatum,
+@end(quote)</code></pre><p></p><p>Produces the first lines of
+<a href="http://www.sacred-texts.com/neu/asbeo.htm"><q>Beowulf</q></a> in
+Anglo-Saxon:</p><blockquote><p>
+Hwæt! We Gardena in geardagum,</p><p>
+þeodcyninga, þrym gefrunon,</p><p>
+hu ða æþelingas ellen fremedon.</p><p>
+Oft Scyld Scefing sceaþena þreatum,
+</p></blockquote><h1 id="pandocl">Pandocl</h1><a href="https://github.com/CommonDoc/pandocl"><b>Pandocl</b></a> is an easy to use
+document converter, meant as a simple interface to CommonDoc.<h2 id="47-examples">Examples</h2><pre><code class="lisp">CL-USER&gt; (pandocl:convert #p&quot;input.tex&quot; #p&quot;output.html&quot;)
+#&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
+
+CL-USER&gt; (pandocl:emit #p&quot;input.tex&quot; #p&quot;output.html&quot;
+                       :input-format :vertex
+                       :output-format :html)
+#&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
+
+CL-USER&gt; (pandocl:parse #p&quot;path/to/doc.tex&quot;)
+#&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
+
+CL-USER&gt; (pandocl:parse #p&quot;path/to/doc.tex&quot; :format :vertex)
+#&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
+
+CL-USER&gt; (pandocl:emit doc #p&quot;path/to/output.html&quot;)
+#&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
+
+CL-USER&gt; (pandocl:emit doc #p&quot;path/to/output.html&quot; :format :html)
+#&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
+</code></pre>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Defining Nodes &ndash; CommonDoc
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">CommonDoc » Defining Nodes</h1>
+  <article>
+    <aside>
+      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+    </aside>
+    <main class="codex-section">
+      <p></p><p>CommonDoc has a macro, <code>define-node</code>, which is exactly like <code>defclass</code> but
+with a few minor extensions to define CommonDoc nodes. These are the
+<code>:tag-name</code> class option and the <code>:attribute-name</code> slot option.</p><p>In a language with a regular syntax, like Scriba or VerTeX, where all syntactic
+structures have an explicit name and optionally an attribute list, these allow
+the parser and emitter to associate these with CommonDoc nodes, my mapping a
+string (The <code>:tag-name</code>) in the text to a class. This way, macro nodes can be
+parsed without actually modifying the parser of any of these formats.</p><p>Markdown, Textile, and other formats that <i>explicitly</i> map specific syntaxes
+to specific nodes won't benefit from these extensions, since for every node you
+want to support you have to modify both parser and emitter to add a new
+syntactic construct that creates it.</p><p>For example, Codex defines the following macro nodes:</p><pre><code class="lisp">(define-node cl-doc (macro-node)
+  ()
+  (:tag-name &quot;cl:doc&quot;)
+  (:documentation &quot;Insert documentation of a node.&quot;))
+
+(define-node with-package (macro-node)
+  ((name :reader package-macro-name
+         :type string
+         :attribute-name &quot;name&quot;
+         :documentation &quot;The package's name.&quot;))
+  (:tag-name &quot;cl:with-package&quot;)
+  (:documentation &quot;Set the current package to use in the body.&quot;))
+
+(define-node param (macro-node)
+  ()
+  (:tag-name &quot;cl:param&quot;)
+  (:documentation &quot;An argument of an operator.&quot;))
+
+(define-node spec (macro-node)
+  ()
+  (:tag-name &quot;cl:spec&quot;)
+  (:documentation &quot;Add a link to the Common Lisp HyperSpec.&quot;))
+</code></pre><p></p><p>This means that, if there's a Scriba file with the text:</p><pre><code class=NIL>... the parameter @cl:param(array) is the array of elements which...
+</code></pre><p></p><p>The <code>cl:param</code> tag will be parsed into the <code>param</code> macro node. This doesn't
+require modifying the source code of the Scriba parser.</p><h1 id="27-api">API</h1><div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">define-node</code><code class="codex-lambda-list">(name (&amp;rest superclasses) slots &amp;rest class-options)</code><div class="codex-docstring">Define a CommonDoc node.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-node</code><code class="codex-lambda-list">(tag-name)</code><div class="codex-docstring">Find a node class by its tag name.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-tag</code><code class="codex-lambda-list">(class)</code><div class="codex-docstring">Return a node class' tag name.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-special-slots</code><code class="codex-lambda-list">(class)</code><div class="codex-docstring">Return a node class' special slots.</div></div>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Formats &ndash; CommonDoc
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">CommonDoc » Formats</h1>
+  <article>
+    <aside>
+      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+    </aside>
+    <main class="codex-section">
+      <h1 id="existing-formats">Existing Formats</h1><h2 id="scriba">Scriba
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></h2><p></p><p>Scriba is a markup format with a syntax similar to that of
+<a href="https://en.wikipedia.org/wiki/Scribe_(markup_language)">Scribe</a>, the
+late-seventies markup language.</p><pre><code class="scribe">@title(My Document)
+
+@begin(section)
+@title(Lists)
+
+This is a list with two items:
+
+@begin(list)
+@item(As promised)
+@item(Just two)
+@end(list)
+
+And this is an enumerated list:
+
+@begin(enum)
+@item(This is the first item)
+@item(And this the second)
+@end(enum)
+
+The real numbers have these properties, among others:
+
+@begin(deflist)
+@term(Associative Law for Addition)
+@def($(x + y) + z = x + (y + z)$)
+
+@term(Commutative Law for Addition)
+@def($x + y = y + x$)
+@end(deflist)
+
+@end(section)
+</code></pre><h3 id="emacs-mode">Emacs Mode</h3><p></p><p>The Scriba repository contains a file, <code>scriba.el</code>, which implements an Emacs
+mode for <code>.scr</code> files. The following commands are defined:</p><dl><dt><code>Tab</code></dt><dd>Insert an at sign.</dd><dt><code>C-c C-c b</code></dt><dd>Prompts for a tag name and inserts the begin/end block with that name.</dd><dt><code>C-c C-c s</code></dt><dd>Prompts for a title and inserts the section block.</dd><dt><code>C-c C-s b</code></dt><dd>Inserts bold markup around the selection.</dd><dt><code>C-c C-s i</code></dt><dd>Inserts italic markup around the selection.</dd><dt><code>C-c C-s u</code></dt><dd>Inserts underline markup around the selection.</dd><dt><code>C-c C-s s</code></dt><dd>Inserts strikethrough markup around the selection.</dd><dt><code>C-c C-s c</code></dt><dd>Inserts code markup around the selection.</dd><dt><code>C-c C-s ^</code></dt><dd>Inserts superscript markup around the selection.</dd><dt><code>C-c C-s v</code></dt><dd>Inserts subscript markup around the selection.</dd></dl><h2 id="vertex">VerTeX</h2><p></p><p>VerTeX is a markup format with a
+<a href="https://en.wikipedia.org/wiki/TeX">TeX</a> like syntax.</p><p>An example of VerTeX syntax is:</p><pre><code class="tex">\title{My Document}
+
+\section{
+\title{Lists}
+
+This is a list with two items:
+
+\list{
+\item{As promised}
+\item{Just two)
+}
+
+And this is an enumerated list:
+
+\enum{
+\item{This is the first item}
+\item{And this the second}
+}
+
+The real numbers have these properties, among others:
+
+\deflist{
+\term{Associative Law for Addition}
+\def{$(x + y) + z = x + (y + z)$}
+
+\term{Commutative Law for Addition}
+\def{$x + y = y + x$}
+}
+
+}
+</code></pre><p></p><p>One disadvantage of using VerTeX comes when writing documents with TeX (to be
+rendered, say, by <a href="https://www.mathjax.org/">MathJax</a> in the HTML
+backend). Because TeX mathematics has operators which would be parsed as VerTeX
+syntax (e.g. <code>\int</code>, <code>\sigma</code>), you either need to escape the slashes or use
+the <code>\verb</code> tag to enter verbatim text. For example:</p><pre><code class="tex">The speed of light is $@verb(\frac{1}{\sqrt{\mu_0 \epsilon_0}})$.
+
+The derivative of $\\log(x)$ is $\\frac{1}{x}$.
+</code></pre><p></p><p>As such, documents using TeX extensively should consider
+<a href="formats.html#scriba">Scriba</a>.</p><p>The parser uses the
+<a href="https://github.com/Shinmera/plump-tex"><code>plump-tex</code></a> library.</p><h1 id="defining-formats">Defining Formats</h1><p></p><p>To define a new format, you simply subclass <code>document-format</code> and define the
+necessary mehods.</p><h2 id="api">API</h2><div class="codex-doc-node codex-record codex-class"><code class="codex-name">document-format</code><div class="codex-docstring">A data format that can be parsed into a CommonDoc document,
+  or that a document can be formatted to.</div><ul class="codex-slot-list"></ul></div><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">parse-document</code><code class="codex-lambda-list">(document-format input)</code><div class="codex-docstring">Parse an input into a CommonDoc document.</div></div><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">emit-document</code><code class="codex-lambda-list">(document-format document stream)</code><div class="codex-docstring">Dump a CommonDoc document into a stream.</div></div><h2 id="examples">Examples</h2><p></p><p>Here's how the VerTeX format is defined:</p><pre><code class="lisp">(defclass vertex (document-format)
+  ()
+  (:documentation &quot;The VerTeX format.&quot;))
+
+(defmethod parse-document ((vertex vertex)
+                           (string string))
+  &quot;Return a VerTeX document parsed from a string.&quot;
+  (vertex.parser:parse-string string))
+
+(defmethod parse-document ((vertex vertex)
+                           (pathname pathname))
+  &quot;Return a VerTeX document parsed from a file.&quot;
+  (vertex.parser:parse-file pathname))
+
+(defmethod emit-document ((vertex vertex)
+                          (node common-doc:document-node)
+                          stream)
+  (vertex.emitter:emit-to-stream node stream))
+
+(defmethod emit-document ((vertex vertex)
+                          (doc common-doc:document)
+                          stream)
+  (vertex.emitter:emit-to-stream doc stream))
+</code></pre>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>

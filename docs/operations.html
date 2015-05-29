@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Operations &ndash; CommonDoc
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">CommonDoc » Operations</h1>
+  <article>
+    <aside>
+      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+    </aside>
+    <main class="codex-section">
+      <blockquote><p>
+As computers capable of constructing concordances become more and more
+acessible, the task of compiling such an index becomes less and less
+significant. What was once the work of a lifetime – or longer –
+is now a relatively modest project. In 1875, Mary Cowden Clarke produly wrote in
+the preface to her concordance of Shakespeare that &quot;to furnish a faithful guide
+to this rich mine of intellectual treasure... has been the ambition of a life;
+and it is hoped that the sixteen years' assiduous labour... may be found to have
+accomplished that ambition&quot; (Clarke 1875). It may have been hard for Mrs. Clarke
+to imagine that a century later, just one person, Todd K. Bender, professor of
+English at the University of Wisconsin, would produce nine concordances in the
+time it took her to construct one.</p><p>
+— Ian H. Witten, Alistair Moffat, and Timothy C. Bell. <i>Managing
+Gigabytes: Compressing and Indexing Documents and Images</i></p></blockquote><p></p><p>Representing documents is half the battle: Now we need ways to traverse, edit
+and filter them.</p><p>CommonDoc, on top of providing the representation of documents, also provides
+operations that can be applied to all documents. These range from the simple
+operation of traversing every node in the document to more complex tasks like
+generating a table of contents or ensuring every section in the document has a
+unique ID.</p><h1 id="document-traversal">Document Traversal</h1><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">traverse-document</code><code class="codex-lambda-list">(node function &amp;optional depth)</code><div class="codex-docstring">Apply a side-effectful function recursively to every element
+  in the document. Depth-first.</div></div><div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-document-traversal</code><code class="codex-lambda-list">((doc node &amp;optional (depth (quote depth))) &amp;body body)</code><div class="codex-docstring">Execute <code class="codex-param">body</code> in each <code class="codex-param">node</code> of the document.</div></div><h2 id="30-examples">Examples</h2><pre><code class="lisp">(defpackage traverse-example
+  (:use :cl :common-doc)
+  (:import-from :common-doc.ops
+                :with-document-traversal))
+(in-package :traverse-example)
+
+(defvar *document*
+  (make-document &quot;test&quot;
+                 :children
+                 (list
+                  (make-bold
+                   (list
+                    (make-italic
+                     (list
+                      (make-underline
+                       (list (make-text &quot;Hello, world!&quot;))))))))))
+
+(with-document-traversal (*document* node)
+  (print node))
+
+;; #&lt;DOCUMENT &quot;test&quot;&gt; 
+;; #&lt;BOLD children: ITALIC&gt; 
+;; #&lt;ITALIC children: UNDERLINE&gt; 
+;; #&lt;UNDERLINE children: TEXT-NODE&gt; 
+;; #&lt;TEXT-NODE text: Hello, world!&gt; 
+;; NIL
+</code></pre><h1 id="extraction">Extraction</h1><p></p><p>Many textbooks include lists of figures and tables. These operations make this
+kind of document preparation tasks easier.<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-figures</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of figures in the document.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-images</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of images in the document.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-tables</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of tables in the document.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-external-links</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of external links in the document.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-all-text</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return all the text from a node or document.</div></div></p><h2 id="32-examples">Examples</h2><pre><code class="lisp">(defpackage extraction-example
+  (:use :cl :common-doc)
+  (:import-from :common-doc.ops
+                :collect-figures))
+(in-package :extraction-example)
+
+(defvar *document*
+  (make-document &quot;test&quot;
+                 :children
+                 (list
+                  (make-section
+                   (list (make-text &quot;Section 1&quot;))
+                   :children
+                   (list
+                    (make-figure
+                     (make-image &quot;fig1.jpg&quot;)
+                     (list
+                      (make-text &quot;Fig 1&quot;)))))
+                  (make-section
+                   (list (make-text &quot;Section 2&quot;))
+                   :children
+                   (list
+                    (make-figure
+                     (make-image &quot;fig2.jpg&quot;)
+                     (list
+                      (make-text &quot;Fig 2&quot;))))))))
+
+(collect-figures *document*) ;; =&gt; (#&lt;FIGURE {1009913D83}&gt; #&lt;FIGURE {1009A98923}&gt;)
+</code></pre><h1 id="filling-references">Filling References</h1><p></p><p>This operation goes through a document, ensuring every section has a unique
+reference ID. Each ID is the 'slug' of the title's text (The text is extracted
+using the <code>collect-all-text</code> operations), optionally with a number preprended
+if this slug is not unique.<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">fill-unique-refs</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Recur through a document, giving unique reference IDs to each section.</div></div></p><h1 id="table-of-contents">Table of Contents</h1><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">table-of-contents</code><code class="codex-lambda-list">(doc-or-node &amp;key max-depth)</code><div class="codex-docstring">Extract a tree of document links representing the table of contents of a
+document. All the sections in the document must have references, so you should
+call fill-unique-refs first.</div></div><h2 id="35-examples">Examples</h2><pre><code class="lisp">(defpackage toc-example
+  (:use :cl :common-doc)
+  (:import-from :common-doc.ops
+                :table-of-contents))
+(in-package :toc-example)
+
+(defvar *document*
+  (make-document &quot;test&quot;
+                 :children
+                 (list
+                  (make-section
+                   (list (make-text &quot;Section 1&quot;))
+                   :reference &quot;sec1&quot;
+                   :children
+                   (list
+                    (make-content
+                     (list
+                      (make-content
+                       (list
+                        (make-section
+                         (list (make-text &quot;Section 1.1&quot;))
+                         :reference &quot;sec11&quot;)))))))
+                  (make-section
+                   (list (make-text &quot;Section 2&quot;))
+                   :reference &quot;sec2&quot;
+                   :children
+                   (list
+                    (make-text &quot;sec2 contents&quot;))))))
+
+(defvar *toc* (table-of-contents *document*))
+
+(dump *toc*)
+;; ordered-list [class=toc]
+;;   list-item
+;;     content-node
+;;       document-link
+;;         text-node
+;;           &quot;Section 1&quot;
+;;       ordered-list
+;;         list-item
+;;           content-node
+;;             document-link
+;;               text-node
+;;                 &quot;Section 1.1&quot;
+;;   list-item
+;;     content-node
+;;       document-link
+;;         text-node
+;;           &quot;Section 2&quot;
+</code></pre><h1 id="equality">Equality</h1><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">node-equal</code><code class="codex-lambda-list">(node-a node-b)</code><div class="codex-docstring">Recursively check whether two nodes are equal.</div></div><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">node-specific-equal</code><code class="codex-lambda-list">(node-a node-b)</code><div class="codex-docstring">Use this method to make node equality more specific.</div></div>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>
