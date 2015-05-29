@@ -3,14 +3,76 @@
 
 @charset "utf-8";
 
-@import "utils/variables";
-@import "utils/mixins";
+*, *:after, *:before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-@import "base/reset";
+$link-color: #3498db;
+$visited-link-color: #3498db;
+$hover-link-color: #3498db;
 
-@import "layout/grid";
+@import url(http://fonts.googleapis.com/css?family=Poly:400,400italic);
+@import url('http://fonts.googleapis.com/css?family=Merriweather:300,400,300italic');
 
-@import "global/style";
+$heading-font: 'Poly', serif;
+$text-font: 'Merriweather', serif;
 
-@import "home/layout";
-@import "home/style";
+body {
+  background: #f9f9f9;
+  font-family: $text-font;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font;
+}
+
+a {
+  text-decoration: none;
+
+  &:link {
+    color: $link-color;
+  }
+
+  &:visited {
+    color: $visited-link-color;
+  }
+
+  &:hover {
+    color: $hover-link-color;
+  }
+}
+
+.home {
+  height: 600px;
+  overflow: auto;
+  text-align: center;
+
+  h1 {
+    width: 400px;
+    margin: 10px auto 25px;
+  }
+
+  .tagline {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+  }
+}
+
+.home {
+  h1 {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 4em;
+    border-bottom: 1px solid #893843;
+  }
+
+  .tagline {
+    font-size: 1.1em;
+  }
+}
