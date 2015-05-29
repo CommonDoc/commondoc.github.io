@@ -22,22 +22,22 @@
     </aside>
     <main class="codex-section">
       <h1 id="plotting-with-gnuplot">Plotting with gnuplot</h1><p></p><p>The <code>common-doc-gnuplot</code> system allows you to render plots using gnuplot
-commands from inside the document.</p><h2 id="50-api">API</h2><div class="codex-doc-node codex-record codex-class"><code class="codex-name">gnuplot</code><div class="codex-docstring">gnuplot plot.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">path</code><div class="codex-docstring">Path to file where the image will be stored.</div></li></ul></div><h2 id="51-examples">Examples</h2><p></p><p>Rendering a direction field:</p><pre><code class="scribe">@begin(section)
-@title(Examples)
-
-Rendering a direction field:
-
-@begin[lang=scribe](code)
-@include[path=extensions.scr start=19 end=30]()
-@end(code)
-
-@begin[path=dir-field.png](gnuplot)
+commands from inside the document.</p><h2 id="50-api">API</h2><div class="codex-doc-node codex-record codex-class"><code class="codex-name">gnuplot</code><div class="codex-docstring">gnuplot plot.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">path</code><div class="codex-docstring">Path to file where the image will be stored.</div></li></ul></div><h2 id="51-examples">Examples</h2><p></p><p>Rendering a direction field:</p><pre><code class="scribe">@begin[path=dir-field.png](gnuplot)
 @begin(verb)
-set xrange [-10:10]</code></pre><p><img src="dir-field.png"/></p><p>The sine and cosine functions:</p><pre><code class="scribe">@end(verb)
-@end(gnuplot)
-
-The sine and cosine functions:
-</code></pre><p><img src="sin-cos.png"/></p><h1 id="include-files">Include Files</h1><p></p><p>The <code>common-doc-include</code> contrib loads external text files into the
+set xrange [-10:10]
+set yrange [-10:10]
+set samples 25
+set isosamples 25
+set key off
+dx(x) = x
+dy(x) = 2*x
+plot &quot;++&quot; using 1:2:(dx($1)):(dy($2)) w vec
+@end(verb)
+@end(gnuplot)</code></pre><p><img src="dir-field.png"/></p><p>The sine and cosine functions:</p><pre><code class="scribe">@begin[path=sin-cos.png](gnuplot)
+@begin(verb)
+plot sin(x), cos(x)
+@end(verb)
+@end(gnuplot)</code></pre><p><img src="sin-cos.png"/></p><h1 id="include-files">Include Files</h1><p></p><p>The <code>common-doc-include</code> contrib loads external text files into the
 document. The <code>path</code> attribute is the path to the file, and the optional
 <code>start</code> and <code>end</code> attributes can be used to specify a numeric range of
 lines.</p><h2 id="53-api">API</h2><div class="codex-doc-node codex-record codex-class"><code class="codex-name">include</code><div class="codex-docstring">Include an external file.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">path</code><div class="codex-docstring">Path to the local file to include.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">start</code><div class="codex-docstring">The line where the inclusion will start.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">end</code><div class="codex-docstring">The line where the inclusion will end.</div></li></ul></div><h2 id="54-examples">Examples</h2><p></p><p>The <a href="https://github.com/CommonDoc/common-doc/tree/master/docs">source
