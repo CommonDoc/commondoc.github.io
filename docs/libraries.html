@@ -27,7 +27,59 @@
 generator used to create this manual.<h1 id="commonhtml
 --">CommonHTML
 <img src="https://travis-ci.org/CommonDoc/common-html.svg?branch=master"/><img src="https://coveralls.io/repos/CommonDoc/common-html/badge.svg?branch=master"/></h1><a href="https://github.com/CommonDoc/common-html"><b>CommonHTML</b></a> is
-CommonDoc's HTML parser and emitter.<h1 id="thorn
+CommonDoc's HTML parser and emitter.<h2 id="44-examples">Examples</h2><pre><code class="lisp">(defpackage html-example
+  (:use :cl :common-doc))
+(in-package :html-example)
+
+(ql:quickload :common-html)
+
+(defvar *document*
+  (make-document
+    &quot;My Document&quot;
+    :children
+    (list
+     (make-section (list (make-text &quot;Introduction&quot;))
+                   :children
+                   (list
+                    (make-paragraph
+                     (list (make-text &quot;This is an example of using CommonHTML.&quot;)))
+                    (make-ordered-list
+                     (list
+                      (make-list-item
+                       (list (make-text &quot;Item one&quot;)))
+                      (make-list-item
+                       (list (make-text &quot;Item two&quot;))))
+                     :metadata (make-meta (list (cons &quot;class&quot; &quot;my-list&quot;))))
+                    (make-definition-list
+                     (list
+                      (make-definition
+                       (list (make-text &quot;Term&quot;))
+                       (list (make-text &quot;Definition&quot;))))))))))
+
+(common-doc.format:emit-to-string (make-instance 'common-html:html)
+                                  *document*)
+&quot;&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Introduction&lt;/h1&gt;
+
+    &lt;p&gt;This is an example of using CommonHTML.&lt;/p&gt;
+
+    &lt;ol class=\&quot;my-list\&quot;&gt;
+      &lt;li&gt;Item one&lt;/li&gt;
+      &lt;li&gt;Item two&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;dl&gt;
+      &lt;dt&gt;Term&lt;/dt
+      &lt;dd&gt;Definition&lt;/dd&gt;
+    &lt;/dl&gt;
+  &lt;/body&gt;
+&lt;/html&gt;&quot;
+</code></pre><h1 id="thorn
 -">Thorn
 <img src="https://travis-ci.org/CommonDoc/thorn.svg?branch=master"/></h1><p><a href="https://github.com/CommonDoc/thorn"><b>Thorn</b></a> is a library for
 inserting special characters into CommonDoc documents.</p><p>Most input methods allow the user to insert characters in different alphabets
@@ -35,18 +87,14 @@ and accented or modified versions of the same, but these are different for
 everyone and often the user will end up looking up a character by name.</p><p>Thorn is a tool for inserting Unicode characters by an ASCII name, the way TeX
 allows users to insert the letters α and β with the commands
 <code>\alpha</code> and <code>\beta</code>, respectively.</p><p>Simply put, it defines a macro, <code>l</code>, that maps a string to a Unicode
-character.</p><h2 id="45-examples">Examples</h2><p></p><p>The following Scriba input:</p><pre><code class="scribe">@begin(quote)
-Hw@l(ae)t! We Gardena in geardagum,
-
+character.</p><h2 id="46-examples">Examples</h2><p></p><p>The following Scriba input:</p><pre><code class="scribe">Hw@l(ae)t! We Gardena in geardagum,
 
 @l(th)eodcyninga, @l(th)rym gefrunon,
 
-
 hu @l(eth)a @l(ae)þelingas ellen fremedon.
 
-
 Oft Scyld Scefing scea@l(th)ena @l(th)reatum,
-@end(quote)</code></pre><p></p><p>Produces the first lines of
+</code></pre><p></p><p>Produces the first lines of
 <a href="http://www.sacred-texts.com/neu/asbeo.htm"><q>Beowulf</q></a> in
 Anglo-Saxon:</p><blockquote><p>
 Hwæt! We Gardena in geardagum,</p><p>
@@ -54,7 +102,7 @@ Hwæt! We Gardena in geardagum,</p><p>
 hu ða æþelingas ellen fremedon.</p><p>
 Oft Scyld Scefing sceaþena þreatum,
 </p></blockquote><h1 id="pandocl">Pandocl</h1><a href="https://github.com/CommonDoc/pandocl"><b>Pandocl</b></a> is an easy to use
-document converter, meant as a simple interface to CommonDoc.<h2 id="47-examples">Examples</h2><pre><code class="lisp">CL-USER&gt; (pandocl:convert #p&quot;input.tex&quot; #p&quot;output.html&quot;)
+document converter, meant as a simple interface to CommonDoc.<h2 id="48-examples">Examples</h2><pre><code class="lisp">CL-USER&gt; (pandocl:convert #p&quot;input.tex&quot; #p&quot;output.html&quot;)
 #&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
 
 CL-USER&gt; (pandocl:emit #p&quot;input.tex&quot; #p&quot;output.html&quot;

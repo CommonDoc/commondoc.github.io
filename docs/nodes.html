@@ -21,7 +21,9 @@
       <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
     </aside>
     <main class="codex-section">
-      <h1 id="metadata">Metadata</h1><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">make-meta</code><code class="codex-lambda-list">(pairs)</code><div class="codex-docstring">Create a metadata table from a list of pairs. If the list is empty, return an
+      <p></p><p>A node is a subtree of a document. Nodes range from atomic nodes like text nodes
+and images to containing nodes like paragraphs, bold text nodes, or section
+nodes.</p><h1 id="metadata">Metadata</h1><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">make-meta</code><code class="codex-lambda-list">(pairs)</code><div class="codex-docstring">Create a metadata table from a list of pairs. If the list is empty, return an
 empty metadata table.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">get-meta</code><code class="codex-lambda-list">(node key)</code><div class="codex-docstring">Find the value corresponding to <code class="codex-param">key</code> in the node's metadata. If not
 found, return <code>NIL</code>.</div></div><div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">do-meta</code><code class="codex-lambda-list">((key value node) &amp;body body)</code><div class="codex-docstring">Iterate over the keys and values of a node's metadata.</div></div><h1 id="basic-classes">Basic Classes</h1><div class="codex-doc-node codex-record codex-class"><code class="codex-name">document</code><div class="codex-docstring"><p>A document.</p><p>Metadata is mostly based on
 <a href="https://en.wikipedia.org/wiki/Dublin_Core">Dublin Core</a> and the
@@ -49,14 +51,33 @@ format.</p></div><ul class="codex-slot-list"><li class="codex-slot codex-class-s
       :children
       (list
         (make-paragraph
-          (list (make-text &quot;...&quot;)))))))
-</code></pre><p></p><p>We can use the <code>dump</code> function to inspect the structure of this document:</p><pre><code class="lisp">COMMON-DOC&gt; (dump my-doc)
+          (list (make-text &quot;...&quot;)))))))</code></pre><p></p><p>We can use the <code>dump</code> function to inspect the structure of this document:</p><pre><code class="lisp">COMMON-DOC&gt; (dump my-doc)
 document
   section
     paragraph
       text-node
-        &quot;...&quot;
-</code></pre>
+        &quot;...&quot;</code></pre><p></p><p>Some examples of accessors:</p><pre><code class="lisp">CL-USER&gt; (in-package :common-doc)
+#&lt;PACKAGE &quot;COMMON-DOC&quot;&gt;
+
+COMMON-DOC&gt; (text (make-text &quot;Hello, world!&quot;))
+&quot;Hello, world!&quot;
+
+COMMON-DOC&gt; (children (make-paragraph
+                        (list (make-text &quot;This is &quot;)
+                              (make-text &quot;a test&quot;))))
+(#&lt;TEXT-NODE text: This is &gt; #&lt;TEXT-NODE text: a test&gt;)
+
+COMMON-DOC&gt; (children (make-paragraph (list (make-text &quot;This is &quot;) (make-text &quot;a test&quot;))))
+(#&lt;TEXT-NODE text: This is &gt; #&lt;TEXT-NODE text: a test&gt;)
+
+COMMON-DOC&gt; (make-code-block &quot;lisp&quot; (list (make-text &quot;(progn ...)&quot;)))
+#&lt;CODE-BLOCK children: TEXT-NODE&gt;
+
+COMMON-DOC&gt; (language *)
+&quot;lisp&quot;
+
+COMMON-DOC&gt; (children **)
+(#&lt;TEXT-NODE text: (progn ...)&gt;)</code></pre>
     </main>
   </article>
   <footer>
