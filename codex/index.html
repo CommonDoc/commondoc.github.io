@@ -4,7 +4,21 @@ layout: codex-default
 ---
 
 <main>
-  <section>
+  <section class="features">
+    <h2>Features</h2>
+    <ul>
+      <li>
+        <h3>HyperSpec Links</h3>
+      </li>
+      <li>
+        <h3>Multiple Themes</h3>
+      </li>
+      <li>
+        <h3>Multiple input formats</h3>
+      </li>
+    </ul>
+  </section>
+  <section class="templates">
     <h2>Templates</h2>
     <section>
       <div class="mockup">
@@ -36,8 +50,8 @@ layout: codex-default
       </div>
     </section>
   </section>
-  <section>
-    <h2>Examples</h2>
+  <section class="users">
+    <h2>Users</h2>
     <ul>
       {% for user in site.codex.users %}
         <li>
