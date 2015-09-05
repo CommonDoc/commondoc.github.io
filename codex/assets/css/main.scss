@@ -9,15 +9,25 @@ main {
 
     }
 
-    .section {
-      h3 {
-      }
+    section {
+      display: flex;
+      flex-direction: row;
 
-      .device-mockup {
+      .mockup {
+        width: 800px;
+
         .screen {
           img {
+            height: 100%;
           }
         }
+      }
+
+      .desc {
+        h4 {
+
+        }
+
       }
     }
   }
