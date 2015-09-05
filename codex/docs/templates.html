@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Templates &ndash; Codex
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="templates"] {
+       /*color: #AD3108;*/
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc li a[data-node="templates"] {
+       font-weight: bold;
+   }
+
+   .toc li a[data-node="templates"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="templates"] + ol li {
+       margin-left: 10px;
+   }
+  </style>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">Codex</h1>
+  <article id="article" data-section="templates">
+    <aside>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a></li><li><a href="tutorial.html" data-node="tutorial">Tutorial</a><ol><li><a href="tutorial.html#getting-started" data-node="getting-started">Getting Started</a></li><li><a href="tutorial.html#writing-with-scriba" data-node="writing-with-scriba">Writing with Scriba</a><ol><li><a href="tutorial.html#formatting" data-node="formatting">Formatting</a></li></ol></li><li><a href="tutorial.html#inserting-api-documentation" data-node="inserting-api-documentation">Inserting API Documentation</a></li><li><a href="tutorial.html#docstrings" data-node="docstrings">Docstrings</a></li><li><a href="tutorial.html#linking-to-the-clhs" data-node="linking-to-the-clhs">Linking to the CLHS</a></li><li><a href="tutorial.html#building" data-node="building">Building</a></li></ol></li><li><a href="templates.html" data-node="templates">Templates</a><ol><li><a href="templates.html#minima" data-node="minima">Minima</a></li><li><a href="templates.html#gamma" data-node="gamma">Gamma</a></li></ol></li><li><a href="authoring-templates.html" data-node="authoring-templates">Authoring Templates</a><ol><li><a href="html-classes.html" data-node="html-classes">HTML Classes</a></li></ol></li><li><a href="internals.html" data-node="internals">Internals</a><ol><li><a href="manifest.html" data-node="manifest">Manifest</a></li><li><a href="errors.html" data-node="errors">Errors</a></li></ol></li></ol>
+    </aside>
+    <main class="codex-section">
+      <header>
+        <h2 class="section-title">Templates</h2>
+      </header>
+      <div class="content">
+        <p>Codex ships with two templates, <b>Minima</b> and <b>Gamma</b>.</p><h1 id="minima">Minima</h1><p><img src="minima.png"/></p><p>Minima is, as the name implies, a minimalist theme. It's name in manifest files
+is <code>:minima</code>.</p><h1 id="gamma">Gamma</h1><p><img src="gamma.png"/></p><p>Gamma is the template you're looking at. It's inspired by the
+<a href="https://stripe.com/docs">Stripe documentation</a>.</p><p>You can use it by setting <code>:template</code> to <code>:gamma</code> in manifest.</p>
+      </div>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>

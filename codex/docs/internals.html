@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Internals &ndash; Codex
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="internals"] {
+       /*color: #AD3108;*/
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc li a[data-node="internals"] {
+       font-weight: bold;
+   }
+
+   .toc li a[data-node="internals"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="internals"] + ol li {
+       margin-left: 10px;
+   }
+  </style>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">Codex</h1>
+  <article id="article" data-section="internals">
+    <aside>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a></li><li><a href="tutorial.html" data-node="tutorial">Tutorial</a><ol><li><a href="tutorial.html#getting-started" data-node="getting-started">Getting Started</a></li><li><a href="tutorial.html#writing-with-scriba" data-node="writing-with-scriba">Writing with Scriba</a><ol><li><a href="tutorial.html#formatting" data-node="formatting">Formatting</a></li></ol></li><li><a href="tutorial.html#inserting-api-documentation" data-node="inserting-api-documentation">Inserting API Documentation</a></li><li><a href="tutorial.html#docstrings" data-node="docstrings">Docstrings</a></li><li><a href="tutorial.html#linking-to-the-clhs" data-node="linking-to-the-clhs">Linking to the CLHS</a></li><li><a href="tutorial.html#building" data-node="building">Building</a></li></ol></li><li><a href="templates.html" data-node="templates">Templates</a><ol><li><a href="templates.html#minima" data-node="minima">Minima</a></li><li><a href="templates.html#gamma" data-node="gamma">Gamma</a></li></ol></li><li><a href="authoring-templates.html" data-node="authoring-templates">Authoring Templates</a><ol><li><a href="authoring-templates.html#html-classes" data-node="html-classes">HTML Classes</a></li></ol></li><li><a href="internals.html" data-node="internals">Internals</a><ol><li><a href="internals.html#manifest" data-node="manifest">Manifest</a></li><li><a href="internals.html#errors" data-node="errors">Errors</a></li></ol></li></ol>
+    </aside>
+    <main class="codex-section">
+      <header>
+        <h2 class="section-title">Internals</h2>
+      </header>
+      <div class="content">
+        <h1 id="manifest">Manifest</h1><p>The manifest and its components are represented by the following classes:
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">manifest</code><div class="codex-docstring">Manifest options.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">markup-format</code><div class="codex-docstring">The markup format used in docstrings.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">systems</code><div class="codex-docstring">A list of systems to document.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">documents</code><div class="codex-docstring">A list of documents.</div></li></ul></div>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">document</code><div class="codex-docstring">A Codex document. Project manifests can define multiple
+  documents, e.g. a manual, a tutorial, an advanced manual.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">document-title</code><div class="codex-docstring">The document's title.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">document-authors</code><div class="codex-docstring">A list of the document's authors.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">output-format</code><div class="codex-docstring">The document's output format.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">document-sources</code><div class="codex-docstring">A list of pathnames to source files to
+ build the document from.</div></li></ul></div>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">output-format</code><div class="codex-docstring">The base class of all output formats.</div><ul class="codex-slot-list"></ul></div>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">html</code><div class="codex-docstring">The base class of HTML formats.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">html-template</code><div class="codex-docstring">The name of the HTML template.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">template-options</code><div class="codex-docstring">A property list of template initargs.</div></li></ul></div>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">single-html</code><div class="codex-docstring">Single-file HTML output.</div><ul class="codex-slot-list"></ul></div>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">multi-html</code><div class="codex-docstring">Multi-file HTML output.</div><ul class="codex-slot-list"></ul></div>
+</p><h1 id="errors">Errors</h1><p>The following is a list of the error conditions Codex can signal:
+<div class="codex-doc-node codex-record codex-condition"><code class="codex-name">codex-error</code><div class="codex-docstring">The base class of all Codex errors.</div><ul class="codex-slot-list"></ul></div>
+<div class="codex-doc-node codex-record codex-condition"><code class="codex-name">manifest-error</code><div class="codex-docstring">Signalled when there is an error parsing a manifest file.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">system-name</code><div class="codex-docstring">The name of the system.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">message</code><div class="codex-docstring">The error message.</div></li></ul></div>
+<div class="codex-doc-node codex-record codex-condition"><code class="codex-name">unsupported-output-format</code><div class="codex-docstring">Signalled when Codex doesn't know the output format a
+  document specifies.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">format-name</code><div class="codex-docstring">The name of the output format.</div></li></ul></div>
+<div class="codex-doc-node codex-record codex-condition"><code class="codex-name">template-error</code><div class="codex-docstring">Signalled by errors related to templates.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">template-name</code><div class="codex-docstring">The template name.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">message</code><div class="codex-docstring">The error message.</div></li></ul></div>
+</p>
+      </div>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>
