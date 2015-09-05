@@ -6,7 +6,6 @@ layout: codex-default
 <main>
   <section>
     <h2>Templates</h2>
-
     <section>
       <div class="mockup">
         <div class="device-mockup macbook">
@@ -36,5 +35,17 @@ layout: codex-default
         <h4>Gamma</h4>
       </div>
     </section>
+  </section>
+  <section>
+    <h2>Examples</h2>
+    <ul>
+      {% for user in site.codex.users %}
+        <li>
+          <a href="{{ user.url }}">
+            {{ user.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
   </section>
 </main>
