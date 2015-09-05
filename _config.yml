@@ -12,3 +12,22 @@ markdown: kramdown
 links:
   repo: https://github.com/CommonDoc/common-doc
   docs: /docs/overview.html
+
+codex:
+  users:
+    - name: Lucerne
+      url: http://eudoxia.me/lucerne/docs/overview.html
+    - name: CommonDoc
+      url: http://commondoc.github.io/docs/overview.html
+    - name: Jonathan
+      url: http://rudolph-miller.github.io/jonathan/overview.html
+    - name: cl-bson
+      url: http://euandre.org/cl-BSON/api.html
+    - name: cl-gists
+      url: https://rudolph-miller.github.io/cl-gists/overview.html
+    - name: cl-annot-prove
+      url: https://rudolph-miller.github.io/cl-annot-prove/overview.html
+    - name: Ceramic
+      url: http://ceramic.github.io/docs/introduction.html
+    - name: roswell-scripts
+      url: https://github.com/Rudolph-Miller/roswell-scripts
