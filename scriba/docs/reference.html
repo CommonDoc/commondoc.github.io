@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Reference &ndash; Scriba
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="reference"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="reference"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="reference"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">Scriba » Reference</h1>
+  <article id="article" data-section="reference">
+    <aside>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a></li><li><a href="reference.html" data-node="reference">Reference</a><ol><li><a href="reference.html#basics" data-node="basics">Basics</a></li><li><a href="reference.html#formatting" data-node="formatting">Formatting</a></li><li><a href="reference.html#sections" data-node="sections">Sections</a></li><li><a href="reference.html#lists" data-node="lists">Lists</a><ol><li><a href="reference.html#unordered" data-node="unordered">Unordered</a></li><li><a href="reference.html#enumerated" data-node="enumerated">Enumerated</a></li><li><a href="reference.html#definition" data-node="definition">Definition</a></li></ol></li><li><a href="reference.html#code" data-node="code">Code</a></li><li><a href="reference.html#links" data-node="links">Links</a><ol><li><a href="reference.html#internal" data-node="internal">Internal</a></li><li><a href="reference.html#external" data-node="external">External</a></li></ol></li><li><a href="reference.html#images-&-figures" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="reference.html#tables" data-node="tables">Tables</a></li></ol></li><li><a href="emacs-mode.html" data-node="emacs-mode">Emacs Mode</a></li></ol>
+    </aside>
+    <main class="codex-section">
+      <p>Below is the complete reference to the Scriba format.</p><h1 id="basics">Basics</h1><p><img src="tag.png"/></p><p>This is a begin/end block:</p><pre><code html:class="scribe">@begin(tag)
+content
+@end(tag)
+</code></pre><p>Paragraphs don't have to be explicitly marked up, they are automatically
+determined by two newlines. That is, the following:</p><pre><code html:class="scribe">This is a paragraph
+
+This is <i>another paragraph</i>.
+</code></pre><p>Will produce:</p><blockquote><p>This is a paragraph</p><p>This is <i>another paragraph</i>.
+</p></blockquote><h1 id="formatting">Formatting</h1><p>The following tags provide basic formatting:</p><dl><dt><code>@b</code></dt><dd>Bold text.</dd><dt><code>@i</code></dt><dd>Italicized text.</dd><dt><code>@u</code></dt><dd>Underlined text.</dd><dt><code>@strike</code></dt><dd>Striked-out text.</dd><dt><code>@c</code></dt><dd>Inline code.</dd><dt><code>@sup</code></dt><dd>Superscripted text.</dd><dt><code>@sub</code></dt><dd>Subscripted text.</dd></dl><p>For instance, the following:</p><pre><code html:class="scribe">This text is @b(bold), this is @i(italics), and this is @c(code). You might also
+want @u(underlined) text.
+
+The speed of light is 3x10@sup(8) meters per second. The symbol for the
+permittivity of vacuum is ε@sub(0).
+</code></pre><p>Will produce the following:</p><blockquote><p>This text is <b>bold</b>, this is <i>italics</i>, and this is <code>code</code>. You might also
+want <u>underlined</u> text.</p><p>The speed of light is 3x10<sup>8</sup> meters per second. The symbol for the
+permittivity of vacuum is ε<sub>0</sub>.
+</p></blockquote><h1 id="sections">Sections</h1><p>Unlike HTML and Markdown, where sections are implicit in the positions of
+headings, CommonDoc (and, thus, Scriba) makes sections explicit blocks.</p><pre><code html:class="scribe">@begin(section)
+@title(Section)
+
+  @begin(section)
+  @title(Subsection)
+
+    @begin(section)
+    @title(Sub-subsection)
+
+    @end(section)
+
+  @end(section)
+
+  @begin[ref=section-id](section)
+  @title(Another subsection)
+
+  @end(section)
+
+@end(section)
+</code></pre><p>The indentation above is optional, normally, section tags are flat.</p><h1 id="lists">Lists</h1><p>Scriba provides three types of lists: unordered, enumerated, and definition
+lists.</p><h2 id="unordered">Unordered</h2><p>Unordered lists can be created with the <code>@list</code> tag. Individual list
+items go in <code>@item</code> tags.</p><pre><code html:class="scribe">@begin(list)
+@item(An item.)
+@item(In @i(a) list.)
+@end(list)
+</code></pre><p>This will produce the following:</p><blockquote><ul><li>An item.</li><li>In <i>a</i> list.</li></ul>
+</blockquote><h2 id="enumerated">Enumerated</h2><p>Enumerated lists can be created with the <code>@enum</code> tag. As in unordered
+lists, list items use <code>@item</code> tags.</p><pre><code html:class="scribe">@begin(enum)
+@item(The first item.)
+@item(The second item.)
+@item(Third.)
+@end(enum)
+</code></pre><p>Will produce this:</p><blockquote><ol><li>The first item.</li><li>The second item.</li><li>Third.</li></ol>
+</blockquote><h2 id="definition">Definition</h2><p>Definition lists can be created with the <code>@deflist</code> tag. Inside the tag
+there are alternating <code>@term</code> and <code>@def</code> tags. For instance,
+the markup below:</p><pre><code html:class="scribe">@begin(deflist)
+
+@term(VerTeX)
+@def(A markup language with text syntax.)
+
+@term(Scriba)
+@begin(def)
+A markup language with Scribe syntax.
+
+As you can see, you can use regular tags and begin/end ones interchangeably.
+@end(def)
+
+@end(deflist)
+</code></pre><p>Will produce this:</p><blockquote><dl><dt>VerTeX</dt><dd>A markup language with text syntax.</dd><dt>Scriba</dt><dd><p>A markup language with Scribe syntax.</p><p>As you can see, you can use regular tags and begin/end ones interchangeably.
+</p></dd></dl>
+</blockquote><h1 id="code">Code</h1><p>The <code>lang</code> attribute is a string identifying the language of the code. No
+restrictions are placed on this value.</p><p>The following markup:</p><pre><code html:class="scribe">@begin[lang=lisp](code)
+(defun fact (n)
+  (if (= n 1)
+      1
+      (* n (fact (1- n)))))
+@end(code)
+</code></pre><p>Will produce:</p><blockquote><pre><code html:class="lisp">(defun fact (n)
+  (if (= n 1)
+      1
+      (* n (fact (1- n)))))
+</code></pre>
+</blockquote><p>You can also use the
+<a href="http://commondoc.github.io/docs/extensions.html#include-files">include
+contrib</a> to include code from a file, or a subrange within a file.</p><h1 id="links">Links</h1><h2 id="internal">Internal</h2><p>The following markup:</p><pre><code html:class="scribe">@begin[ref=data-table-3](table)
+@row(@cell(@b(A)) @cell(@b(B)) @cell(@b(C)))
+@row(@cell(1.23) @cell(3.14) @cell(4.5))
+@end(table)
+
+...
+
+See the third @ref[id=data-table-3](table) for the data.
+</code></pre><p>Will produce the following table and link:</p><blockquote><table id="data-table-3"><tr><td><b>A</b></td><td><b>B</b></td><td><b>C</b></td></tr>
+<tr><td>1.23</td><td>3.14</td><td>4.5</td></tr>
+</table><p>...</p><p>See the third <a href="data-table-3.html" data-node="data-table-3">table</a> for the data.
+</p></blockquote><p>You can also link to nodes inside other documents, where a document is
+identified by a string:</p><pre><code html:class="scribe">For a more thorough discussion, see @ref[doc=aima id=search](the AIMA chapter)
+on search algorithms.
+</code></pre><p>
+</p><h2 id="external">External</h2><p>You can link to external URLs using the <code>@link</code> tag. This:</p><pre><code html:class="scribe">Visit @link[uri=&quot;https://www.google.com/&quot;](Google).
+</code></pre><p>Will produce:</p><blockquote>Visit <a href="https://www.google.com/">Google</a>.
+</blockquote><h1 id="images-&-figures">Images &amp; Figures</h1><p>You can link to images in the filesystem relative to the document:</p><pre><code html:class="scribe">@image[src=path/to/image.png]()
+</code></pre><p>Or to images on the web. For instance, a Travis build status badge:</p><pre><code html:class="scribe">@image[src=&quot;https://travis-ci.org/eudoxia0/crane.svg?branch=master&quot;]()
+</code></pre><p>will produce:</p><blockquote><img src="https://travis-ci.org/eudoxia0/crane.svg?branch=master"/>
+</blockquote><h1 id="tables">Tables</h1><pre><code html:class="scribe">@begin(table)
+  @begin(row)
+    @cell()
+    @cell(@b(Peach))
+    @cell(@b(Egg))
+  @end(row)
+  @begin(row)
+    @cell(@i(Fat))
+    @cell(0.25g)
+    @cell(10.6g)
+  @end(row)
+  @begin(row)
+    @cell(@i(Protein))
+    @cell(0.91g)
+    @cell(12.6g)
+  @end(row)
+@end(table)
+</code></pre><p>Produces the following:</p><blockquote><table><tr><td></td>
+    <td><b>Peach</b></td>
+    <td><b>Egg</b></td>
+  </tr>
+  <tr><td><i>Fat</i></td>
+    <td>0.25g</td>
+    <td>10.6g</td>
+  </tr>
+  <tr><td><i>Protein</i></td>
+    <td>0.91g</td>
+    <td>12.6g</td>
+  </tr>
+</table>
+</blockquote><p>Note that the indentation in this example is completely optional.</p>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>

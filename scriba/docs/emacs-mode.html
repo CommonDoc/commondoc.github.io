@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Emacs Mode &ndash; Scriba
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="emacs-mode"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="emacs-mode"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="emacs-mode"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">Scriba » Emacs Mode</h1>
+  <article id="article" data-section="emacs-mode">
+    <aside>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a></li><li><a href="reference.html" data-node="reference">Reference</a><ol><li><a href="reference.html#basics" data-node="basics">Basics</a></li><li><a href="reference.html#formatting" data-node="formatting">Formatting</a></li><li><a href="reference.html#sections" data-node="sections">Sections</a></li><li><a href="reference.html#lists" data-node="lists">Lists</a><ol><li><a href="reference.html#unordered" data-node="unordered">Unordered</a></li><li><a href="reference.html#enumerated" data-node="enumerated">Enumerated</a></li><li><a href="reference.html#definition" data-node="definition">Definition</a></li></ol></li><li><a href="reference.html#code" data-node="code">Code</a></li><li><a href="reference.html#links" data-node="links">Links</a><ol><li><a href="reference.html#internal" data-node="internal">Internal</a></li><li><a href="reference.html#external" data-node="external">External</a></li></ol></li><li><a href="reference.html#images-&-figures" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="reference.html#tables" data-node="tables">Tables</a></li></ol></li><li><a href="emacs-mode.html" data-node="emacs-mode">Emacs Mode</a></li></ol>
+    </aside>
+    <main class="codex-section">
+      <p>The Scriba repository contains a file, <code>scriba.el</code>, which implements an Emacs
+mode for <code>.scr</code> files. The following commands are defined:</p><dl><dt><code>Tab</code></dt><dd>Insert an at sign.</dd><dt><code>C-c C-c b</code></dt><dd>Prompts for a tag name and inserts the begin/end block with that name.</dd><dt><code>C-c C-c s</code></dt><dd>Prompts for a title and inserts the section block.</dd><dt><code>C-c C-s b</code></dt><dd>Inserts bold markup around the selection.</dd><dt><code>C-c C-s i</code></dt><dd>Inserts italic markup around the selection.</dd><dt><code>C-c C-s u</code></dt><dd>Inserts underline markup around the selection.</dd><dt><code>C-c C-s s</code></dt><dd>Inserts strikethrough markup around the selection.</dd><dt><code>C-c C-s c</code></dt><dd>Inserts code markup around the selection.</dd><dt><code>C-c C-s ^</code></dt><dd>Inserts superscript markup around the selection.</dd><dt><code>C-c C-s v</code></dt><dd>Inserts subscript markup around the selection.</dd></dl>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>
