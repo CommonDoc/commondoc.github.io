@@ -41,7 +41,7 @@
   <h1 class="doc-title">Codex</h1>
   <article id="article" data-section="tutorial">
     <aside>
-      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a></li><li><a href="tutorial.html" data-node="tutorial">Tutorial</a><ol><li><a href="tutorial.html#getting-started" data-node="getting-started">Getting Started</a></li><li><a href="tutorial.html#writing-with-scriba" data-node="writing-with-scriba">Writing with Scriba</a><ol><li><a href="tutorial.html#formatting" data-node="formatting">Formatting</a></li></ol></li><li><a href="tutorial.html#inserting-api-documentation" data-node="inserting-api-documentation">Inserting API Documentation</a></li><li><a href="tutorial.html#docstrings" data-node="docstrings">Docstrings</a></li><li><a href="tutorial.html#linking-to-the-clhs" data-node="linking-to-the-clhs">Linking to the CLHS</a></li><li><a href="tutorial.html#building" data-node="building">Building</a></li></ol></li><li><a href="templates.html" data-node="templates">Templates</a><ol><li><a href="minima.html" data-node="minima">Minima</a></li><li><a href="gamma.html" data-node="gamma">Gamma</a></li></ol></li><li><a href="authoring-templates.html" data-node="authoring-templates">Authoring Templates</a><ol><li><a href="html-classes.html" data-node="html-classes">HTML Classes</a></li></ol></li><li><a href="internals.html" data-node="internals">Internals</a><ol><li><a href="manifest.html" data-node="manifest">Manifest</a></li><li><a href="errors.html" data-node="errors">Errors</a></li></ol></li></ol>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a></li><li><a href="tutorial.html" data-node="tutorial">Tutorial</a><ol><li><a href="tutorial.html#getting-started" data-node="getting-started">Getting Started</a></li><li><a href="tutorial.html#writing-with-scriba" data-node="writing-with-scriba">Writing with Scriba</a></li><li><a href="tutorial.html#inserting-api-documentation" data-node="inserting-api-documentation">Inserting API Documentation</a></li><li><a href="tutorial.html#docstrings" data-node="docstrings">Docstrings</a></li><li><a href="tutorial.html#linking-to-the-clhs" data-node="linking-to-the-clhs">Linking to the CLHS</a></li><li><a href="tutorial.html#building" data-node="building">Building</a></li></ol></li><li><a href="templates.html" data-node="templates">Templates</a><ol><li><a href="minima.html" data-node="minima">Minima</a></li><li><a href="gamma.html" data-node="gamma">Gamma</a></li></ol></li><li><a href="authoring-templates.html" data-node="authoring-templates">Authoring Templates</a><ol><li><a href="html-classes.html" data-node="html-classes">HTML Classes</a></li></ol></li><li><a href="internals.html" data-node="internals">Internals</a><ol><li><a href="manifest.html" data-node="manifest">Manifest</a></li><li><a href="errors.html" data-node="errors">Errors</a></li></ol></li></ol>
     </aside>
     <main class="codex-section">
       <header>
@@ -51,7 +51,7 @@
         <p>This tutorial goes through the process of documenting a Lisp project with Codex.</p><h1 id="getting-started">Getting Started</h1><p>First, ceate a folder named <code>docs</code> in your project's root directory (the same
 directory as the ASDF file). There, you need to create two files:
 <code>manifest.lisp</code> and <code>manual.scr</code>.</p><p>The <code>manifest.lisp</code> file is read by Codex to figure out how to generate your
-docs, and in your case looks like this:</p><pre><code class="lisp">(:docstring-markup-format :scriba
+docs, and in your case looks like this:</p><pre><code html:class="lisp">(:docstring-markup-format :scriba
  :systems (:my-library)
  :documents ((:title &quot;My Library&quot;
               :authors (&quot;John Q. Lisper&quot;)
@@ -59,26 +59,16 @@ docs, and in your case looks like this:</p><pre><code class="lisp">(:docstring-m
                               :template :minima)
               :sources (&quot;manual.scr&quot;))))
 </code></pre><p>What this tells Codex is, mainly:</p><ul><li>Use Scriba to parse the docstrings.</li><li>Before generating the docs, load and extract docstrings from the
-<code>my-library</code> system.</li><li>Generate a document titled &quot;My Library&quot; from the <code>manual.scr</code> file.</li><li>Write the document to mutiple HTML files using the Minima template.</li></ul><p>The <code>manual.scr</code> file will be fairly bare-bones for now:</p><pre><code class="scribe">@begin(section)
+<code>my-library</code> system.</li><li>Generate a document titled &quot;My Library&quot; from the <code>manual.scr</code> file.</li><li>Write the document to mutiple HTML files using the Minima template.</li></ul><p>The <code>manual.scr</code> file will be fairly bare-bones for now:</p><pre><code html:class="scribe">@begin(section)
 @title(Overview)
 
 My library does X, Y and Z.
 
 @end(section)
-</code></pre><h1 id="writing-with-scriba">Writing with Scriba</h1><p>Scriba is the preferred markup format for Codex documentation. It's similar to
-Scribe and Texinfo, has a simple and general syntax, and supports arbitrary
-CommonDoc macros. Additionally, it can be used inside Lisp docstrings without
-escaping anything.</p><h2 id="formatting">Formatting</h2><p>The following:</p><pre><code class="scribe">This text is @b(bold), this is @i(italics), and this is @c(code). You might also
-want @u(underlined) text.
-
-The speed of light is 3x10@sup(8) meters per second. The symbol for the
-permittivity of vacuum is ε@sub(0).
-</code></pre><p>Will produce this:</p><blockquote><p>This text is <b>bold</b>, this is <i>italics</i>, and this is <code>code</code>. You might also
-want <u>underlined</u> text.</p><p>The speed of light is 3x10<sup>8</sup> meters per second. The symbol for the
-permittivity of vacuum is ε<sub>0</sub>.
-</p></blockquote><h1 id="inserting-api-documentation">Inserting API Documentation</h1><p>To insert documentation of some Common Lisp construct – a function,
+</code></pre><h1 id="writing-with-scriba">Writing with Scriba</h1><p>You can find the Scriba reference
+<a href="http://commondoc.github.io/scriba/docs/reference.html">here</a>.</p><h1 id="inserting-api-documentation">Inserting API Documentation</h1><p>To insert documentation of some Common Lisp construct – a function,
 class, macro, condition, etc. – you use the <code>cl:with-package</code> and
-<code>cl:doc</code> macros. For instance:</p><pre><code class="scriba">@cl:with-package[name=&quot;my-app&quot;](
+<code>cl:doc</code> macros. For instance:</p><pre><code html:class="scriba">@cl:with-package[name=&quot;my-app&quot;](
 @cl:doc(function my-function)
 @cl:doc(macro my-macro)
 )
@@ -90,7 +80,7 @@ complex API documentation. For instance, classes include documentatio strings
 for all their slots.</p><p>The <code>cl:doc</code> macro takes its arguments as a space-separated list of strings in
 the body. The first argument is the documentation type (e.g., &quot;function&quot; or
 &quot;class&quot;), and the second the symbol name of the thing to insert. For methods,
-you can add the lambda list of the method you want to insert. For example:</p><pre><code class="scriba">@cl:with-package[name=&quot;serialize-lib&quot;](
+you can add the lambda list of the method you want to insert. For example:</p><pre><code html:class="scriba">@cl:with-package[name=&quot;serialize-lib&quot;](
 @cl:doc(generic serialize)
 @cl:doc(method serialize (object integer) stream)
 @cl:doc(method serialize (object float) stream)
@@ -99,7 +89,7 @@ you can add the lambda list of the method you want to insert. For example:</p><p
 </code></pre><p>Belows is the full list of API documentation types:</p><ul><li><code>function</code></li><li><code>macro</code></li><li><code>generic</code></li><li><code>method</code></li><li><code>variable</code></li><li><code>struct</code></li><li><code>class</code></li><li><code>condition</code></li><li><code>type</code></li><li><code>cfunction</code></li><li><code>ctype</code></li><li><code>cstruct</code></li><li><code>cunion</code></li><li><code>cenum</code></li><li><code>cbitfield</code></li></ul><p>The documentation types prefixed with a 'c' refer to CFFI constructs, i.e.,
 <code>cfunction</code> refers to a C function declared with CFFI's <code>defcfun</code> macro.</p><h1 id="docstrings">Docstrings</h1><p>Codex parses documentation strings using the format you specify in the manifest
 with the <code>:docstring-markup-format</code> option. In this case, we've chosen Scriba,
-which means we can insert Scriba markup in docstrings. For example:</p><pre><code class="lisp">(defun download-website-text (url)
+which means we can insert Scriba markup in docstrings. For example:</p><pre><code html:class="lisp">(defun download-website-text (url)
   &quot;Downloads @cl:param(url) and strips all HTML tags.&quot;
   ...)
 
@@ -110,7 +100,7 @@ which means we can insert Scriba markup in docstrings. For example:</p><pre><cod
          :documentation &quot;All instances @b(must) initialize cost to a floating
          point value.&quot;)))
 </code></pre><h1 id="linking-to-the-clhs">Linking to the CLHS</h1><p>You can use the <code>cl:spec</code> macro to link to a part of the Common Lisp
-HyperSpec.</p><p>For example, the following:</p><pre><code class="lisp">@cl:spec(call-next-method)
+HyperSpec.</p><p>For example, the following:</p><pre><code html:class="lisp">@cl:spec(call-next-method)
 @cl:spec(complex)
 </code></pre><p>will produce links to <a href="http://l1sp.org/cl/call-next-method"><code>call-next-method</code></a> and <a href="http://l1sp.org/cl/complex"><code>complex</code></a>.</p><h1 id="building">Building</h1><p>Finally, run <code>(codex:document :my-system)</code>. You'll see some compilation output
 and a lot of lines with &quot;Inserting documentation for...&quot;. When that's done, you
