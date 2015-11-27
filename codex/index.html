@@ -3,33 +3,41 @@ title: Codex
 layout: codex-default
 ---
 
+<header>
+  <div class="box">
+    <h1>Codex</h1>
+    <div class="tagline">Build beautiful documentation</div>
+  </div>
+</header>
 <main>
+  <section class="intro">
+    <p>
+      <strong>Codex</strong> is a modern documentation generator for Common
+      Lisp. It makes it easy to create beautiful and useful documentation from
+      both prose and automatically extracted docstrings.
+    </p>
+    <p>
+      Codex uses <a href="{{ site.data.links.cd }}">CommonDoc</a> due to its
+      expressive power and macro system.
+    </p>
+    <p>
+      The source is available <a href="{{ site.data.links.codex }}">here</a>.
+      Start at the <a href="/codex/docs/tutorial.html">tutorial</a>.
+    </p>
+  </section>
   <section class="features">
     <h2>Features</h2>
     <ul>
-      <li>
-        <h3>HyperSpec Links</h3>
-      </li>
-      <li>
-        <h3>Multiple Themes</h3>
-      </li>
-      <li>
-        <h3>Multiple input formats</h3>
-      </li>
-      <li>
-        <h3>Both Prose and API Documentation</h3>
-      </li>
-      <li>
-        <h3>Inspired by Sphinx</h3>
-      </li>
-      <li>
-        <h3></h3>
-      </li>
+      {% for feature in site.data.codex.features %}
+        <li>
+          <h3>{{ feature }}</h3>
+        </li>
+      {% endfor %}
     </ul>
   </section>
   <section class="templates">
     <h2>Templates</h2>
-    <section>
+    <section class="minima">
       <div class="mockup">
         <div class="device-mockup macbook">
           <div class="device">
@@ -41,9 +49,12 @@ layout: codex-default
       </div>
       <div class="desc">
         <h4>Minima</h4>
+        <p>
+          A minimalistic template.
+        </p>
       </div>
     </section>
-    <section>
+    <section class="gamma">
       <div class="mockup">
         <div class="device-mockup macbook">
           <div class="device">
@@ -55,13 +66,16 @@ layout: codex-default
       </div>
       <div class="desc">
         <h4>Gamma</h4>
+        <p>
+          A simple template inspired by the <a href="https://stripe.com/docs">Stripe documentation</a>.
+        </p>
       </div>
     </section>
   </section>
   <section class="users">
     <h2>Users</h2>
     <ul>
-      {% for user in site.codex.users %}
+      {% for user in site.data.codex.users %}
         <li>
           <a href="{{ user.url }}">
             {{ user.name }}
@@ -70,4 +84,10 @@ layout: codex-default
       {% endfor %}
     </ul>
   </section>
+  <section class="docs">
+    <a href="/codex/docs/overview.html">Read the docs</a>
+  </section>
 </main>
+<footer>
+  &copy 2015 <a href="http://eudoxia.me/">Fernando Borretti</a>
+</footer>
