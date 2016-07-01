@@ -11,17 +11,46 @@
     
   <link rel="stylesheet" href="static/highlight.css"/>
   <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="operations"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="operations"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="operations"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
 
   </head>
   <body>
     
   <h1 class="doc-title">CommonDoc » Operations</h1>
-  <article>
+  <article id="article" data-section="operations">
     <aside>
-      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#features" data-node="features">Features</a></li><li><a href="overview.html#use-cases" data-node="use-cases">Use Cases</a><ol><li><a href="overview.html#documentation" data-node="documentation">Documentation</a></li><li><a href="overview.html#document-conversion" data-node="document-conversion">Document Conversion</a></li><li><a href="overview.html#wiki" data-node="wiki">Wiki</a></li></ol></li><li><a href="overview.html#motivation" data-node="motivation">Motivation</a></li></ol></li><li><a href="formats.html" data-node="formats">Formats</a><ol><li><a href="formats.html#existing-formats" data-node="existing-formats">Existing Formats</a><ol><li><a href="formats.html#scriba" data-node="scriba">Scriba
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></a><ol><li><a href="formats.html#emacs-mode" data-node="emacs-mode">Emacs Mode</a></li></ol></li><li><a href="formats.html#vertex" data-node="vertex">VerTeX</a></li></ol></li><li><a href="formats.html#defining-formats" data-node="defining-formats">Defining Formats</a><ol><li><a href="formats.html#api" data-node="api">API</a></li><li><a href="formats.html#examples" data-node="examples">Examples</a></li></ol></li></ol></li><li><a href="nodes.html" data-node="nodes">Nodes</a><ol><li><a href="nodes.html#metadata" data-node="metadata">Metadata</a></li><li><a href="nodes.html#basic-classes" data-node="basic-classes">Basic Classes</a></li><li><a href="nodes.html#inline-nodes" data-node="inline-nodes">Inline Nodes</a></li><li><a href="nodes.html#code" data-node="code">Code</a></li><li><a href="nodes.html#quotes" data-node="quotes">Quotes</a></li><li><a href="nodes.html#links" data-node="links">Links</a></li><li><a href="nodes.html#lists" data-node="lists">Lists</a></li><li><a href="nodes.html#images-&-figures" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="nodes.html#tables" data-node="tables">Tables</a></li><li><a href="nodes.html#constructors" data-node="constructors">Constructors</a></li><li><a href="nodes.html#0-examples" data-node="0-examples">Examples</a></li></ol></li><li><a href="defining-nodes.html" data-node="defining-nodes">Defining Nodes</a><ol><li><a href="defining-nodes.html#1-api" data-node="1-api">API</a></li></ol></li><li><a href="operations.html" data-node="operations">Operations</a><ol><li><a href="operations.html#document-traversal" data-node="document-traversal">Document Traversal</a><ol><li><a href="operations.html#2-examples" data-node="2-examples">Examples</a></li></ol></li><li><a href="operations.html#extraction" data-node="extraction">Extraction</a><ol><li><a href="operations.html#3-examples" data-node="3-examples">Examples</a></li></ol></li><li><a href="operations.html#filling-references" data-node="filling-references">Filling References</a></li><li><a href="operations.html#table-of-contents" data-node="table-of-contents">Table of Contents</a><ol><li><a href="operations.html#4-examples" data-node="4-examples">Examples</a></li></ol></li><li><a href="operations.html#equality" data-node="equality">Equality</a></li></ol></li><li><a href="files.html" data-node="files">Files</a><ol><li><a href="5-api.html" data-node="5-api">API</a></li><li><a href="6-examples.html" data-node="6-examples">Examples</a></li></ol></li><li><a href="errors.html" data-node="errors">Errors</a></li><li><a href="libraries.html" data-node="libraries">Libraries</a><ol><li><a href="codex.html" data-node="codex">Codex</a></li><li><a href="commonhtml.html" data-node="commonhtml">CommonHTML</a><ol><li><a href="7-examples.html" data-node="7-examples">Examples</a></li></ol></li><li><a href="thorn.html" data-node="thorn">Thorn</a><ol><li><a href="8-examples.html" data-node="8-examples">Examples</a></li></ol></li><li><a href="pandocl.html" data-node="pandocl">Pandocl</a><ol><li><a href="9-examples.html" data-node="9-examples">Examples</a></li></ol></li></ol></li><li><a href="extensions.html" data-node="extensions">Extensions</a><ol><li><a href="plotting-with-gnuplot.html" data-node="plotting-with-gnuplot">Plotting with gnuplot</a><ol><li><a href="10-api.html" data-node="10-api">API</a></li><li><a href="11-examples.html" data-node="11-examples">Examples</a></li></ol></li><li><a href="include-files.html" data-node="include-files">Include Files</a><ol><li><a href="12-api.html" data-node="12-api">API</a></li><li><a href="13-examples.html" data-node="13-examples">Examples</a></li></ol></li><li><a href="split-paragraphs.html" data-node="split-paragraphs">Split Paragraphs</a><ol><li><a href="14-api.html" data-node="14-api">API</a></li><li><a href="15-examples.html" data-node="15-examples">Examples</a></li></ol></li><li><a href="tex.html" data-node="tex">TeX</a><ol><li><a href="16-api.html" data-node="16-api">API</a></li><li><a href="17-examples.html" data-node="17-examples">Examples</a></li></ol></li></ol></li><li><a href="future-work.html" data-node="future-work">Future Work</a></li></ol>
     </aside>
     <main class="codex-section">
-      <blockquote><p></p><p>As computers capable of constructing concordances become more and more
+      <blockquote><p>As computers capable of constructing concordances become more and more
 acessible, the task of compiling such an index becomes less and less
 significant. What was once the work of a lifetime – or longer –
 is now a relatively modest project. In 1875, Mary Cowden Clarke proudly wrote in
@@ -33,13 +62,18 @@ that a century later, just one person, Todd K. Bender, professor of English at
 the University of Wisconsin, would produce nine concordances in the time it took
 her to construct one.</p><p>
 — Ian H. Witten, Alistair Moffat, and Timothy C. Bell. <i>Managing
-Gigabytes: Compressing and Indexing Documents and Images</i></p></blockquote><p></p><p>Representing documents is half the battle: Now we need ways to traverse, edit
+Gigabytes: Compressing and Indexing Documents and Images</i>
+</p></blockquote><p>Representing documents is half the battle: Now we need ways to traverse, edit
 and filter them.</p><p>CommonDoc, on top of providing the representation of documents, also provides
 operations that can be applied to all documents. These range from the simple
 operation of traversing every node in the document to more complex tasks like
 generating a table of contents or ensuring every section in the document has a
-unique ID.</p><h1 id="document-traversal">Document Traversal</h1><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">traverse-document</code><code class="codex-lambda-list">(node function &amp;optional depth)</code><div class="codex-docstring">Apply a side-effectful function recursively to every element
-  in the document. Depth-first.</div></div><div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-document-traversal</code><code class="codex-lambda-list">((doc node &amp;optional (depth (quote depth))) &amp;body body)</code><div class="codex-docstring">Execute <code class="codex-param">body</code> in each <code class="codex-param">node</code> of the document.</div></div><h2 id="30-examples">Examples</h2><pre><code class="lisp">(defpackage traverse-example
+unique ID.</p><h1 id="document-traversal">Document Traversal</h1><p>
+<div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">traverse-document</code><code class="codex-lambda-list">(node function &amp;optional depth)</code><div class="codex-docstring">Apply a side-effectful function recursively to every element
+  in the document. Depth-first. Doesn't apply the function to the document
+  itself.</div></div>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-document-traversal</code><code class="codex-lambda-list">((doc node &amp;optional (depth (quote depth))) &amp;body body)</code><div class="codex-docstring">Execute <code class="codex-param">body</code> in each <code class="codex-param">node</code> of the document.</div></div>
+</p><h2 id="2-examples">Examples</h2><pre><code class="lisp">(defpackage traverse-example
   (:use :cl :common-doc)
   (:import-from :common-doc.ops
                 :with-document-traversal))
@@ -65,8 +99,14 @@ unique ID.</p><h1 id="document-traversal">Document Traversal</h1><div class="cod
 ;; #&lt;UNDERLINE children: TEXT-NODE&gt; 
 ;; #&lt;TEXT-NODE text: Hello, world!&gt; 
 ;; NIL
-</code></pre><h1 id="extraction">Extraction</h1><p></p><p>Many textbooks include lists of figures and tables. These operations make this
-kind of document preparation tasks easier.<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-figures</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of figures in the document.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-images</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of images in the document.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-tables</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of tables in the document.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-external-links</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of external links in the document.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-all-text</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return all the text from a node or document.</div></div></p><h2 id="32-examples">Examples</h2><pre><code class="lisp">(defpackage extraction-example
+</code></pre><h1 id="extraction">Extraction</h1><p>Many textbooks include lists of figures and tables. These operations make this
+kind of document preparation tasks easier.
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-figures</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of figures in the document.</div></div>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-images</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of images in the document.</div></div>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-tables</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of tables in the document.</div></div>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-external-links</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return a list of external links in the document.</div></div>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">collect-all-text</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Return all the text from a node or document.</div></div>
+</p><h2 id="3-examples">Examples</h2><pre><code class="lisp">(defpackage extraction-example
   (:use :cl :common-doc)
   (:import-from :common-doc.ops
                 :collect-figures))
@@ -94,12 +134,16 @@ kind of document preparation tasks easier.<div class="codex-doc-node codex-opera
                       (make-text &quot;Fig 2&quot;))))))))
 
 (collect-figures *document*) ;; =&gt; (#&lt;FIGURE {1009913D83}&gt; #&lt;FIGURE {1009A98923}&gt;)
-</code></pre><h1 id="filling-references">Filling References</h1><p></p><p>This operation goes through a document, ensuring every section has a unique
+</code></pre><h1 id="filling-references">Filling References</h1><p>This operation goes through a document, ensuring every section has a unique
 reference ID. Each ID is the 'slug' of the title's text (The text is extracted
 using the <code>collect-all-text</code> operations), optionally with a number preprended
-if this slug is not unique.<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">fill-unique-refs</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Recur through a document, giving unique reference IDs to each section.</div></div></p><h1 id="table-of-contents">Table of Contents</h1><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">table-of-contents</code><code class="codex-lambda-list">(doc-or-node &amp;key max-depth)</code><div class="codex-docstring">Extract a tree of document links representing the table of contents of a
+if this slug is not unique.
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">fill-unique-refs</code><code class="codex-lambda-list">(doc-or-node)</code><div class="codex-docstring">Recur through a document, giving unique reference IDs to each section.</div></div>
+</p><h1 id="table-of-contents">Table of Contents</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">table-of-contents</code><code class="codex-lambda-list">(doc-or-node &amp;key max-depth)</code><div class="codex-docstring">Extract a tree of document links representing the table of contents of a
 document. All the sections in the document must have references, so you should
-call fill-unique-refs first.</div></div><h2 id="35-examples">Examples</h2><pre><code class="lisp">(defpackage toc-example
+call fill-unique-refs first.</div></div>
+</p><h2 id="4-examples">Examples</h2><pre><code class="lisp">(defpackage toc-example
   (:use :cl :common-doc)
   (:import-from :common-doc.ops
                 :table-of-contents))
@@ -148,7 +192,10 @@ call fill-unique-refs first.</div></div><h2 id="35-examples">Examples</h2><pre><
 ;;       document-link
 ;;         text-node
 ;;           &quot;Section 2&quot;
-</code></pre><h1 id="equality">Equality</h1><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">node-equal</code><code class="codex-lambda-list">(node-a node-b)</code><div class="codex-docstring">Recursively check whether two nodes are equal.</div></div><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">node-specific-equal</code><code class="codex-lambda-list">(node-a node-b)</code><div class="codex-docstring">Use this method to make node equality more specific.</div></div>
+</code></pre><h1 id="equality">Equality</h1><p>
+<div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">node-equal</code><code class="codex-lambda-list">(node-a node-b)</code><div class="codex-docstring">Recursively check whether two nodes are equal.</div></div>
+<div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">node-specific-equal</code><code class="codex-lambda-list">(node-a node-b)</code><div class="codex-docstring">Use this method to make node equality more specific.</div></div>
+</p>
     </main>
   </article>
   <footer>

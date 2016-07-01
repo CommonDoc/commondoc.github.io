@@ -11,18 +11,49 @@
     
   <link rel="stylesheet" href="static/highlight.css"/>
   <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="extensions"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="extensions"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="extensions"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
 
   </head>
   <body>
     
   <h1 class="doc-title">CommonDoc » Extensions</h1>
-  <article>
+  <article id="article" data-section="extensions">
     <aside>
-      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#features" data-node="features">Features</a></li><li><a href="overview.html#use-cases" data-node="use-cases">Use Cases</a><ol><li><a href="overview.html#documentation" data-node="documentation">Documentation</a></li><li><a href="overview.html#document-conversion" data-node="document-conversion">Document Conversion</a></li><li><a href="overview.html#wiki" data-node="wiki">Wiki</a></li></ol></li><li><a href="overview.html#motivation" data-node="motivation">Motivation</a></li></ol></li><li><a href="formats.html" data-node="formats">Formats</a><ol><li><a href="formats.html#existing-formats" data-node="existing-formats">Existing Formats</a><ol><li><a href="formats.html#scriba" data-node="scriba">Scriba
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></a><ol><li><a href="formats.html#emacs-mode" data-node="emacs-mode">Emacs Mode</a></li></ol></li><li><a href="formats.html#vertex" data-node="vertex">VerTeX</a></li></ol></li><li><a href="formats.html#defining-formats" data-node="defining-formats">Defining Formats</a><ol><li><a href="formats.html#api" data-node="api">API</a></li><li><a href="formats.html#examples" data-node="examples">Examples</a></li></ol></li></ol></li><li><a href="nodes.html" data-node="nodes">Nodes</a><ol><li><a href="nodes.html#metadata" data-node="metadata">Metadata</a></li><li><a href="nodes.html#basic-classes" data-node="basic-classes">Basic Classes</a></li><li><a href="nodes.html#inline-nodes" data-node="inline-nodes">Inline Nodes</a></li><li><a href="nodes.html#code" data-node="code">Code</a></li><li><a href="nodes.html#quotes" data-node="quotes">Quotes</a></li><li><a href="nodes.html#links" data-node="links">Links</a></li><li><a href="nodes.html#lists" data-node="lists">Lists</a></li><li><a href="nodes.html#images-&-figures" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="nodes.html#tables" data-node="tables">Tables</a></li><li><a href="nodes.html#constructors" data-node="constructors">Constructors</a></li><li><a href="nodes.html#0-examples" data-node="0-examples">Examples</a></li></ol></li><li><a href="defining-nodes.html" data-node="defining-nodes">Defining Nodes</a><ol><li><a href="defining-nodes.html#1-api" data-node="1-api">API</a></li></ol></li><li><a href="operations.html" data-node="operations">Operations</a><ol><li><a href="operations.html#document-traversal" data-node="document-traversal">Document Traversal</a><ol><li><a href="operations.html#2-examples" data-node="2-examples">Examples</a></li></ol></li><li><a href="operations.html#extraction" data-node="extraction">Extraction</a><ol><li><a href="operations.html#3-examples" data-node="3-examples">Examples</a></li></ol></li><li><a href="operations.html#filling-references" data-node="filling-references">Filling References</a></li><li><a href="operations.html#table-of-contents" data-node="table-of-contents">Table of Contents</a><ol><li><a href="operations.html#4-examples" data-node="4-examples">Examples</a></li></ol></li><li><a href="operations.html#equality" data-node="equality">Equality</a></li></ol></li><li><a href="files.html" data-node="files">Files</a><ol><li><a href="files.html#5-api" data-node="5-api">API</a></li><li><a href="files.html#6-examples" data-node="6-examples">Examples</a></li></ol></li><li><a href="errors.html" data-node="errors">Errors</a></li><li><a href="libraries.html" data-node="libraries">Libraries</a><ol><li><a href="libraries.html#codex" data-node="codex">Codex</a></li><li><a href="libraries.html#commonhtml" data-node="commonhtml">CommonHTML</a><ol><li><a href="libraries.html#7-examples" data-node="7-examples">Examples</a></li></ol></li><li><a href="libraries.html#thorn" data-node="thorn">Thorn</a><ol><li><a href="libraries.html#8-examples" data-node="8-examples">Examples</a></li></ol></li><li><a href="libraries.html#pandocl" data-node="pandocl">Pandocl</a><ol><li><a href="libraries.html#9-examples" data-node="9-examples">Examples</a></li></ol></li></ol></li><li><a href="extensions.html" data-node="extensions">Extensions</a><ol><li><a href="extensions.html#plotting-with-gnuplot" data-node="plotting-with-gnuplot">Plotting with gnuplot</a><ol><li><a href="extensions.html#10-api" data-node="10-api">API</a></li><li><a href="extensions.html#11-examples" data-node="11-examples">Examples</a></li></ol></li><li><a href="extensions.html#include-files" data-node="include-files">Include Files</a><ol><li><a href="extensions.html#12-api" data-node="12-api">API</a></li><li><a href="extensions.html#13-examples" data-node="13-examples">Examples</a></li></ol></li><li><a href="extensions.html#split-paragraphs" data-node="split-paragraphs">Split Paragraphs</a><ol><li><a href="extensions.html#14-api" data-node="14-api">API</a></li><li><a href="extensions.html#15-examples" data-node="15-examples">Examples</a></li></ol></li><li><a href="extensions.html#tex" data-node="tex">TeX</a><ol><li><a href="extensions.html#16-api" data-node="16-api">API</a></li><li><a href="extensions.html#17-examples" data-node="17-examples">Examples</a></li></ol></li></ol></li><li><a href="future-work.html" data-node="future-work">Future Work</a></li></ol>
     </aside>
     <main class="codex-section">
-      <h1 id="plotting-with-gnuplot">Plotting with gnuplot</h1><p></p><p>The <code>common-doc-gnuplot</code> system allows you to render plots using gnuplot
-commands from inside the document.</p><h2 id="51-api">API</h2><div class="codex-doc-node codex-record codex-class"><code class="codex-name">gnuplot</code><div class="codex-docstring">gnuplot plot.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">path</code><div class="codex-docstring">Path to file where the image will be stored.</div></li></ul></div><h2 id="52-examples">Examples</h2><p></p><p>Rendering a direction field:</p><pre><code class="scribe">@begin[path=dir-field.png](gnuplot)
+      <h1 id="plotting-with-gnuplot">Plotting with gnuplot</h1><p>The <code>common-doc-gnuplot</code> system allows you to render plots using gnuplot
+commands from inside the document.</p><h2 id="10-api">API</h2><p>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">gnuplot</code><div class="codex-docstring">gnuplot plot.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">path</code><div class="codex-docstring">Path to file where the image will be stored.</div></li></ul></div>
+</p><h2 id="11-examples">Examples</h2><p>Rendering a direction field:</p><pre><code class="scribe">@begin[path=dir-field.png](gnuplot)
 @begin(verb)
 set xrange [-10:10]
 set yrange [-10:10]
@@ -33,17 +64,24 @@ dx(x) = x
 dy(x) = 2*x
 plot &quot;++&quot; using 1:2:(dx($1)):(dy($2)) w vec
 @end(verb)
-@end(gnuplot)</code></pre><p><img src="dir-field.png"/></p><p>The sine and cosine functions:</p><pre><code class="scribe">@begin[path=sin-cos.png](gnuplot)
+@end(gnuplot)
+</code></pre><p><img src="dir-field.png"/></p><p>The sine and cosine functions:</p><pre><code class="scribe">@begin[path=sin-cos.png](gnuplot)
 @begin(verb)
 plot sin(x), cos(x)
 @end(verb)
-@end(gnuplot)</code></pre><p><img src="sin-cos.png"/></p><h1 id="include-files">Include Files</h1><p></p><p>The <code>common-doc-include</code> contrib loads external text files into the
+@end(gnuplot)
+</code></pre><p><img src="sin-cos.png"/></p><h1 id="include-files">Include Files</h1><p>The <code>common-doc-include</code> contrib loads external text files into the
 document. The <code>path</code> attribute is the path to the file, and the optional
 <code>start</code> and <code>end</code> attributes can be used to specify a numeric range of
-lines.</p><h2 id="54-api">API</h2><div class="codex-doc-node codex-record codex-class"><code class="codex-name">include</code><div class="codex-docstring">Include an external file.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">path</code><div class="codex-docstring">Path to the local file to include.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">start</code><div class="codex-docstring">The line where the inclusion will start.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">end</code><div class="codex-docstring">The line where the inclusion will end.</div></li></ul></div><h2 id="55-examples">Examples</h2><p></p><p>The <a href="https://github.com/CommonDoc/common-doc/tree/master/docs">source
-code</a> of this documentation uses <code>common-doc-include</code> extensively.</p><h1 id="split-paragraphs">Split Paragraphs</h1><p></p><p>The <code>common-doc-split-paragraphs</code> contrib splits text nodes on double newlines
-into separate paragraphs.</p><h2 id="57-api">API</h2><div class="codex-doc-node codex-variable"><code class="codex-name">*paragraph-separator-regex*</code><div class="codex-docstring">A regular expression that matches double newlines.</div></div><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">split-paragraphs</code><code class="codex-lambda-list">(node)</code><div class="codex-docstring">Recursively go through a document, splitting paragraphs in
-  text nodes into paragraph nodes.</div></div><h2 id="58-examples">Examples</h2><pre><code class="lisp">(defpackage split-paragraphs-example
+lines.</p><h2 id="12-api">API</h2><p>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">include</code><div class="codex-docstring">Include an external file.</div><ul class="codex-slot-list"><li class="codex-slot codex-class-slot"><code class="codex-name">path</code><div class="codex-docstring">Path to the local file to include.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">start</code><div class="codex-docstring">The line where the inclusion will start.</div></li><li class="codex-slot codex-class-slot"><code class="codex-name">end</code><div class="codex-docstring">The line where the inclusion will end.</div></li></ul></div>
+</p><h2 id="13-examples">Examples</h2><p>The <a href="https://github.com/CommonDoc/common-doc/tree/master/docs">source
+code</a> of this documentation uses <code>common-doc-include</code> extensively.</p><h1 id="split-paragraphs">Split Paragraphs</h1><p>The <code>common-doc-split-paragraphs</code> contrib splits text nodes on double newlines
+into separate paragraphs.</p><h2 id="14-api">API</h2><p>
+<div class="codex-doc-node codex-variable"><code class="codex-name">*paragraph-separator-regex*</code><div class="codex-docstring">A regular expression that matches double newlines.</div></div>
+<div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">split-paragraphs</code><code class="codex-lambda-list">(node)</code><div class="codex-docstring">Recursively go through a document, splitting paragraphs in
+  text nodes into paragraph nodes.</div></div>
+</p><h2 id="15-examples">Examples</h2><pre><code class="lisp">(defpackage split-paragraphs-example
   (:use :cl :common-doc)
   (:import-from :common-doc.split-paragraphs
                 :split-paragraphs))
@@ -91,12 +129,15 @@ into separate paragraphs.</p><h2 id="57-api">API</h2><div class="codex-doc-node 
 ;;   paragraph
 ;;     text-node
 ;;       &quot;Other text.&quot;
-</code></pre><h1 id="tex">TeX</h1><p></p><p>The <code>common-doc-tex</code> contrib is just a couple of macros that expand to TeX
-notation. They are useful for two reasons:</p><ol><li>Using them is more semantic than using the resulting <code>$...$</code> syntax.</li><li>The macroexpansion can be overriden.</li></ol><h2 id="60-api">API</h2><div class="codex-doc-node codex-record codex-class"><code class="codex-name">tex</code><div class="codex-docstring">Inline TeX code.</div><ul class="codex-slot-list"></ul></div><div class="codex-doc-node codex-record codex-class"><code class="codex-name">tex-block</code><div class="codex-docstring">Block of TeX code.</div><ul class="codex-slot-list"></ul></div><h2 id="61-examples">Examples</h2><p></p><p>The following Scriba input:</p><pre><code class="scribe">The derivative of a function @tex(f) at @tex(a), @tex(f'(a)), is
+</code></pre><h1 id="tex">TeX</h1><p>The <code>common-doc-tex</code> contrib is just a couple of macros that expand to TeX
+notation. They are useful for two reasons:</p><ol><li>Using them is more semantic than using the resulting <code>$...$</code> syntax.</li><li>The macroexpansion can be overriden.</li></ol><h2 id="16-api">API</h2><p>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">tex</code><div class="codex-docstring">Inline TeX code.</div><ul class="codex-slot-list"></ul></div>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">tex-block</code><div class="codex-docstring">Block of TeX code.</div><ul class="codex-slot-list"></ul></div>
+</p><h2 id="17-examples">Examples</h2><p>The following Scriba input:</p><pre><code class="scribe">The derivative of a function @tex(f) at @tex(a), @tex(f'(a)), is
 
 @begin(texb)
 f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}
-@end(texb)</code></pre><p></p><p>Expands to the following:</p><pre><code class="scribe">The derivative of a function $f$ at $a$, $f'(a)$, is
+@end(texb)</code></pre><p>Expands to the following:</p><pre><code class="scribe">The derivative of a function $f$ at $a$, $f'(a)$, is
 
 \(
 f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}

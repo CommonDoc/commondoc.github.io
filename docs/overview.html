@@ -11,21 +11,49 @@
     
   <link rel="stylesheet" href="static/highlight.css"/>
   <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="overview"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="overview"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="overview"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
 
   </head>
   <body>
     
   <h1 class="doc-title">CommonDoc » Overview</h1>
-  <article>
+  <article id="article" data-section="overview">
     <aside>
-      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#features" data-node="features">Features</a></li><li><a href="overview.html#use-cases" data-node="use-cases">Use Cases</a><ol><li><a href="overview.html#documentation" data-node="documentation">Documentation</a></li><li><a href="overview.html#document-conversion" data-node="document-conversion">Document Conversion</a></li><li><a href="overview.html#wiki" data-node="wiki">Wiki</a></li></ol></li><li><a href="overview.html#motivation" data-node="motivation">Motivation</a></li></ol></li><li><a href="formats.html" data-node="formats">Formats</a><ol><li><a href="existing-formats.html" data-node="existing-formats">Existing Formats</a><ol><li><a href="scriba.html" data-node="scriba">Scriba
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></a><ol><li><a href="emacs-mode.html" data-node="emacs-mode">Emacs Mode</a></li></ol></li><li><a href="vertex.html" data-node="vertex">VerTeX</a></li></ol></li><li><a href="defining-formats.html" data-node="defining-formats">Defining Formats</a><ol><li><a href="api.html" data-node="api">API</a></li><li><a href="examples.html" data-node="examples">Examples</a></li></ol></li></ol></li><li><a href="nodes.html" data-node="nodes">Nodes</a><ol><li><a href="metadata.html" data-node="metadata">Metadata</a></li><li><a href="basic-classes.html" data-node="basic-classes">Basic Classes</a></li><li><a href="inline-nodes.html" data-node="inline-nodes">Inline Nodes</a></li><li><a href="code.html" data-node="code">Code</a></li><li><a href="quotes.html" data-node="quotes">Quotes</a></li><li><a href="links.html" data-node="links">Links</a></li><li><a href="lists.html" data-node="lists">Lists</a></li><li><a href="images-&-figures.html" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="tables.html" data-node="tables">Tables</a></li><li><a href="constructors.html" data-node="constructors">Constructors</a></li><li><a href="0-examples.html" data-node="0-examples">Examples</a></li></ol></li><li><a href="defining-nodes.html" data-node="defining-nodes">Defining Nodes</a><ol><li><a href="1-api.html" data-node="1-api">API</a></li></ol></li><li><a href="operations.html" data-node="operations">Operations</a><ol><li><a href="document-traversal.html" data-node="document-traversal">Document Traversal</a><ol><li><a href="2-examples.html" data-node="2-examples">Examples</a></li></ol></li><li><a href="extraction.html" data-node="extraction">Extraction</a><ol><li><a href="3-examples.html" data-node="3-examples">Examples</a></li></ol></li><li><a href="filling-references.html" data-node="filling-references">Filling References</a></li><li><a href="table-of-contents.html" data-node="table-of-contents">Table of Contents</a><ol><li><a href="4-examples.html" data-node="4-examples">Examples</a></li></ol></li><li><a href="equality.html" data-node="equality">Equality</a></li></ol></li><li><a href="files.html" data-node="files">Files</a><ol><li><a href="5-api.html" data-node="5-api">API</a></li><li><a href="6-examples.html" data-node="6-examples">Examples</a></li></ol></li><li><a href="errors.html" data-node="errors">Errors</a></li><li><a href="libraries.html" data-node="libraries">Libraries</a><ol><li><a href="codex.html" data-node="codex">Codex</a></li><li><a href="commonhtml.html" data-node="commonhtml">CommonHTML</a><ol><li><a href="7-examples.html" data-node="7-examples">Examples</a></li></ol></li><li><a href="thorn.html" data-node="thorn">Thorn</a><ol><li><a href="8-examples.html" data-node="8-examples">Examples</a></li></ol></li><li><a href="pandocl.html" data-node="pandocl">Pandocl</a><ol><li><a href="9-examples.html" data-node="9-examples">Examples</a></li></ol></li></ol></li><li><a href="extensions.html" data-node="extensions">Extensions</a><ol><li><a href="plotting-with-gnuplot.html" data-node="plotting-with-gnuplot">Plotting with gnuplot</a><ol><li><a href="10-api.html" data-node="10-api">API</a></li><li><a href="11-examples.html" data-node="11-examples">Examples</a></li></ol></li><li><a href="include-files.html" data-node="include-files">Include Files</a><ol><li><a href="12-api.html" data-node="12-api">API</a></li><li><a href="13-examples.html" data-node="13-examples">Examples</a></li></ol></li><li><a href="split-paragraphs.html" data-node="split-paragraphs">Split Paragraphs</a><ol><li><a href="14-api.html" data-node="14-api">API</a></li><li><a href="15-examples.html" data-node="15-examples">Examples</a></li></ol></li><li><a href="tex.html" data-node="tex">TeX</a><ol><li><a href="16-api.html" data-node="16-api">API</a></li><li><a href="17-examples.html" data-node="17-examples">Examples</a></li></ol></li></ol></li><li><a href="future-work.html" data-node="future-work">Future Work</a></li></ol>
     </aside>
     <main class="codex-section">
-      <a href="https://github.com/CommonDoc/common-doc">CommonDoc</a> is a library of
+      <p><a href="https://github.com/CommonDoc/common-doc">CommonDoc</a> is a library of
 classes for representing structured documents. It's completely independent of
 input or output formats, and provides operations for inspecting and manipulating
-documents.<h1 id="features">Features</h1><dl><dt>Separation of Concerns</dt><dd><p>
-Parsers for Markdown and other markup languages generally implement their
+documents.</p><h1 id="features">Features</h1><dl><dt>Separation of Concerns</dt><dd><p>Parsers for Markdown and other markup languages generally implement their
 internal representation of document structure, and code to transform it directly
 to one or more output formats. Generally, every parser has a different internal
 representation, a different set of supported backends, each in various degrees
@@ -33,22 +61,19 @@ of completeness.</p><p>What CommonDoc provides is a way to separate parser and e
 common framework for representing documents. Parsers and emitters can be written
 to convert text to and from various markup languages (Markdown, Textile, ReST,
 etc.) while keeping a single, backend-agnostic internal representation.
-</p></dd><dt>Macros</dt><dd>
-CommonDoc has macro nodes that can be expanded to other nodes, and has built-in
+</p></dd><dt>Macros</dt><dd>CommonDoc has macro nodes that can be expanded to other nodes, and has built-in
 nodes for including external text files, rendering gnuplot graphs, among other
 things.
-</dd><dt>Operations</dt><dd>
-CommonDoc provides operations that modify or extract information from documents,
+</dd><dt>Operations</dt><dd>CommonDoc provides operations that modify or extract information from documents,
 and because of the input/output-agnostic design work for all documents.
-</dd></dl><h1 id="use-cases">Use Cases</h1><h2 id="documentation">Documentation</h2><p></p><p>The <a href="https://github.com/CommonDoc/codex">Codex</a> documentation
+</dd></dl><h1 id="use-cases">Use Cases</h1><h2 id="documentation">Documentation</h2><p>The <a href="https://github.com/CommonDoc/codex">Codex</a> documentation
 generation (used to build this manual) uses CommonDoc to represent the
 documentation as well as parse docstrings, and build highly customizable user
-and programer documentation for Common Lisp projects.</p><h2 id="document-conversion">Document Conversion</h2><p></p><p>CommonDoc defines input and output parsers for each input format, making it an
-ideal tool to convert documents from one markup format to the other.</p><h2 id="wiki">Wiki</h2><p></p><p>CommonDoc, along with CommonHTML, can be used as the backend of a wiki system.</p><h1 id="motivation">Motivation</h1><p></p><p>This library can be considered an implementation of Robert Strandh's suggestion
+and programer documentation for Common Lisp projects.</p><h2 id="document-conversion">Document Conversion</h2><p>CommonDoc defines input and output parsers for each input format, making it an
+ideal tool to convert documents from one markup format to the other.</p><h2 id="wiki">Wiki</h2><p>CommonDoc, along with CommonHTML, can be used as the backend of a wiki system.</p><h1 id="motivation">Motivation</h1><p>This library can be considered an implementation of Robert Strandh's suggestion
 for the creation of a
 <a href="http://metamodular.com/Common-Lisp/document-library.html">library
-for representing documents</a>:</p><blockquote><p>
-The purpose of this project is to create a library that defines a set of classes
+for representing documents</a>:</p><blockquote><p>The purpose of this project is to create a library that defines a set of classes
 and generic functions that allow some client code to create and manipulate a
 document. Contrary to the types of systems cited above, the specification of
 this system is thus in terms of what kind of objects it manipulates, and what

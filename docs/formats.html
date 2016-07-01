@@ -11,18 +11,47 @@
     
   <link rel="stylesheet" href="static/highlight.css"/>
   <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="formats"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="formats"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="formats"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
 
   </head>
   <body>
     
   <h1 class="doc-title">CommonDoc » Formats</h1>
-  <article>
+  <article id="article" data-section="formats">
     <aside>
-      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#features" data-node="features">Features</a></li><li><a href="overview.html#use-cases" data-node="use-cases">Use Cases</a><ol><li><a href="overview.html#documentation" data-node="documentation">Documentation</a></li><li><a href="overview.html#document-conversion" data-node="document-conversion">Document Conversion</a></li><li><a href="overview.html#wiki" data-node="wiki">Wiki</a></li></ol></li><li><a href="overview.html#motivation" data-node="motivation">Motivation</a></li></ol></li><li><a href="formats.html" data-node="formats">Formats</a><ol><li><a href="formats.html#existing-formats" data-node="existing-formats">Existing Formats</a><ol><li><a href="formats.html#scriba" data-node="scriba">Scriba
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></a><ol><li><a href="formats.html#emacs-mode" data-node="emacs-mode">Emacs Mode</a></li></ol></li><li><a href="formats.html#vertex" data-node="vertex">VerTeX</a></li></ol></li><li><a href="formats.html#defining-formats" data-node="defining-formats">Defining Formats</a><ol><li><a href="formats.html#api" data-node="api">API</a></li><li><a href="formats.html#examples" data-node="examples">Examples</a></li></ol></li></ol></li><li><a href="nodes.html" data-node="nodes">Nodes</a><ol><li><a href="metadata.html" data-node="metadata">Metadata</a></li><li><a href="basic-classes.html" data-node="basic-classes">Basic Classes</a></li><li><a href="inline-nodes.html" data-node="inline-nodes">Inline Nodes</a></li><li><a href="code.html" data-node="code">Code</a></li><li><a href="quotes.html" data-node="quotes">Quotes</a></li><li><a href="links.html" data-node="links">Links</a></li><li><a href="lists.html" data-node="lists">Lists</a></li><li><a href="images-&-figures.html" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="tables.html" data-node="tables">Tables</a></li><li><a href="constructors.html" data-node="constructors">Constructors</a></li><li><a href="0-examples.html" data-node="0-examples">Examples</a></li></ol></li><li><a href="defining-nodes.html" data-node="defining-nodes">Defining Nodes</a><ol><li><a href="1-api.html" data-node="1-api">API</a></li></ol></li><li><a href="operations.html" data-node="operations">Operations</a><ol><li><a href="document-traversal.html" data-node="document-traversal">Document Traversal</a><ol><li><a href="2-examples.html" data-node="2-examples">Examples</a></li></ol></li><li><a href="extraction.html" data-node="extraction">Extraction</a><ol><li><a href="3-examples.html" data-node="3-examples">Examples</a></li></ol></li><li><a href="filling-references.html" data-node="filling-references">Filling References</a></li><li><a href="table-of-contents.html" data-node="table-of-contents">Table of Contents</a><ol><li><a href="4-examples.html" data-node="4-examples">Examples</a></li></ol></li><li><a href="equality.html" data-node="equality">Equality</a></li></ol></li><li><a href="files.html" data-node="files">Files</a><ol><li><a href="5-api.html" data-node="5-api">API</a></li><li><a href="6-examples.html" data-node="6-examples">Examples</a></li></ol></li><li><a href="errors.html" data-node="errors">Errors</a></li><li><a href="libraries.html" data-node="libraries">Libraries</a><ol><li><a href="codex.html" data-node="codex">Codex</a></li><li><a href="commonhtml.html" data-node="commonhtml">CommonHTML</a><ol><li><a href="7-examples.html" data-node="7-examples">Examples</a></li></ol></li><li><a href="thorn.html" data-node="thorn">Thorn</a><ol><li><a href="8-examples.html" data-node="8-examples">Examples</a></li></ol></li><li><a href="pandocl.html" data-node="pandocl">Pandocl</a><ol><li><a href="9-examples.html" data-node="9-examples">Examples</a></li></ol></li></ol></li><li><a href="extensions.html" data-node="extensions">Extensions</a><ol><li><a href="plotting-with-gnuplot.html" data-node="plotting-with-gnuplot">Plotting with gnuplot</a><ol><li><a href="10-api.html" data-node="10-api">API</a></li><li><a href="11-examples.html" data-node="11-examples">Examples</a></li></ol></li><li><a href="include-files.html" data-node="include-files">Include Files</a><ol><li><a href="12-api.html" data-node="12-api">API</a></li><li><a href="13-examples.html" data-node="13-examples">Examples</a></li></ol></li><li><a href="split-paragraphs.html" data-node="split-paragraphs">Split Paragraphs</a><ol><li><a href="14-api.html" data-node="14-api">API</a></li><li><a href="15-examples.html" data-node="15-examples">Examples</a></li></ol></li><li><a href="tex.html" data-node="tex">TeX</a><ol><li><a href="16-api.html" data-node="16-api">API</a></li><li><a href="17-examples.html" data-node="17-examples">Examples</a></li></ol></li></ol></li><li><a href="future-work.html" data-node="future-work">Future Work</a></li></ol>
     </aside>
     <main class="codex-section">
       <h1 id="existing-formats">Existing Formats</h1><h2 id="scriba">Scriba
-<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></h2><p></p><p>Scriba is a markup format with a syntax similar to that of
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></h2><p>Scriba is a markup format with a syntax similar to that of
 <a href="https://en.wikipedia.org/wiki/Scribe_(markup_language)">Scribe</a>, the
 late-seventies markup language.</p><pre><code class="scribe">@title(My Document)
 
@@ -54,8 +83,9 @@ The real numbers have these properties, among others:
 @end(deflist)
 
 @end(section)
-</code></pre><h3 id="emacs-mode">Emacs Mode</h3><p></p><p>The Scriba repository contains a file, <code>scriba.el</code>, which implements an Emacs
-mode for <code>.scr</code> files. The following commands are defined:</p><dl><dt><code>Tab</code></dt><dd>Insert an at sign.</dd><dt><code>C-c C-c b</code></dt><dd>Prompts for a tag name and inserts the begin/end block with that name.</dd><dt><code>C-c C-c s</code></dt><dd>Prompts for a title and inserts the section block.</dd><dt><code>C-c C-s b</code></dt><dd>Inserts bold markup around the selection.</dd><dt><code>C-c C-s i</code></dt><dd>Inserts italic markup around the selection.</dd><dt><code>C-c C-s u</code></dt><dd>Inserts underline markup around the selection.</dd><dt><code>C-c C-s s</code></dt><dd>Inserts strikethrough markup around the selection.</dd><dt><code>C-c C-s c</code></dt><dd>Inserts code markup around the selection.</dd><dt><code>C-c C-s ^</code></dt><dd>Inserts superscript markup around the selection.</dd><dt><code>C-c C-s v</code></dt><dd>Inserts subscript markup around the selection.</dd></dl><h2 id="vertex">VerTeX</h2><p></p><p>VerTeX is a markup format with a
+
+</code></pre><h3 id="emacs-mode">Emacs Mode</h3><p>The Scriba repository contains a file, <code>scriba.el</code>, which implements an Emacs
+mode for <code>.scr</code> files. The following commands are defined:</p><dl><dt><code>Tab</code></dt><dd>Insert an at sign.</dd><dt><code>C-c C-c b</code></dt><dd>Prompts for a tag name and inserts the begin/end block with that name.</dd><dt><code>C-c C-c s</code></dt><dd>Prompts for a title and inserts the section block.</dd><dt><code>C-c C-s b</code></dt><dd>Inserts bold markup around the selection.</dd><dt><code>C-c C-s i</code></dt><dd>Inserts italic markup around the selection.</dd><dt><code>C-c C-s u</code></dt><dd>Inserts underline markup around the selection.</dd><dt><code>C-c C-s s</code></dt><dd>Inserts strikethrough markup around the selection.</dd><dt><code>C-c C-s c</code></dt><dd>Inserts code markup around the selection.</dd><dt><code>C-c C-s ^</code></dt><dd>Inserts superscript markup around the selection.</dd><dt><code>C-c C-s v</code></dt><dd>Inserts subscript markup around the selection.</dd></dl><h2 id="vertex">VerTeX</h2><p>VerTeX is a markup format with a
 <a href="https://en.wikipedia.org/wiki/TeX">TeX</a> like syntax.</p><p>An example of VerTeX syntax is:</p><pre><code class="tex">\title{My Document}
 
 \section{
@@ -86,18 +116,24 @@ The real numbers have these properties, among others:
 }
 
 }
-</code></pre><p></p><p>One disadvantage of using VerTeX comes when writing documents with TeX (to be
+
+</code></pre><p>One disadvantage of using VerTeX comes when writing documents with TeX (to be
 rendered, say, by <a href="https://www.mathjax.org/">MathJax</a> in the HTML
 backend). Because TeX mathematics has operators which would be parsed as VerTeX
 syntax (e.g. <code>\int</code>, <code>\sigma</code>), you either need to escape the slashes or use
 the <code>\verb</code> tag to enter verbatim text. For example:</p><pre><code class="tex">The speed of light is $@verb(\frac{1}{\sqrt{\mu_0 \epsilon_0}})$.
 
 The derivative of $\\log(x)$ is $\\frac{1}{x}$.
-</code></pre><p></p><p>As such, documents using TeX extensively should consider
-<a href="formats.html#scriba">Scriba</a>.</p><p>The parser uses the
-<a href="https://github.com/Shinmera/plump-tex"><code>plump-tex</code></a> library.</p><h1 id="defining-formats">Defining Formats</h1><p></p><p>To define a new format, you simply subclass <code>document-format</code> and define the
-necessary mehods.</p><h2 id="api">API</h2><div class="codex-doc-node codex-record codex-class"><code class="codex-name">document-format</code><div class="codex-docstring">A data format that can be parsed into a CommonDoc document,
-  or that a document can be formatted to.</div><ul class="codex-slot-list"></ul></div><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">parse-document</code><code class="codex-lambda-list">(document-format input)</code><div class="codex-docstring">Parse an input into a CommonDoc document.</div></div><div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">emit-document</code><code class="codex-lambda-list">(document-format document stream)</code><div class="codex-docstring">Dump a CommonDoc document into a stream.</div></div><h2 id="examples">Examples</h2><p></p><p>Here's how the VerTeX format is defined:</p><pre><code class="lisp">(defclass vertex (document-format)
+
+</code></pre><p>As such, documents using TeX extensively should consider
+<a href="formats.html#scriba" data-node="scriba">Scriba</a>.</p><p>The parser uses the
+<a href="https://github.com/Shinmera/plump-tex"><code>plump-tex</code></a> library.</p><h1 id="defining-formats">Defining Formats</h1><p>To define a new format, you simply subclass <code>document-format</code> and define the
+necessary mehods.</p><h2 id="api">API</h2><p>
+<div class="codex-doc-node codex-record codex-class"><code class="codex-name">document-format</code><div class="codex-docstring">A data format that can be parsed into a CommonDoc document,
+  or that a document can be formatted to.</div><ul class="codex-slot-list"></ul></div>
+<div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">parse-document</code><code class="codex-lambda-list">(document-format input)</code><div class="codex-docstring">Parse an input into a CommonDoc document.</div></div>
+<div class="codex-doc-node codex-operator codex-generic-function"><code class="codex-name">emit-document</code><code class="codex-lambda-list">(document-format document stream)</code><div class="codex-docstring">Dump a CommonDoc document into a stream.</div></div>
+</p><h2 id="examples">Examples</h2><p>Here's how the VerTeX format is defined:</p><pre><code class="lisp">(defclass vertex (document-format)
   ()
   (:documentation &quot;The VerTeX format.&quot;))
 

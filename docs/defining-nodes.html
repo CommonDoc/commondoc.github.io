@@ -11,31 +11,59 @@
     
   <link rel="stylesheet" href="static/highlight.css"/>
   <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="defining-nodes"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="defining-nodes"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="defining-nodes"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
 
   </head>
   <body>
     
   <h1 class="doc-title">CommonDoc » Defining Nodes</h1>
-  <article>
+  <article id="article" data-section="defining-nodes">
     <aside>
-      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#features" data-node="features">Features</a></li><li><a href="overview.html#use-cases" data-node="use-cases">Use Cases</a><ol><li><a href="overview.html#documentation" data-node="documentation">Documentation</a></li><li><a href="overview.html#document-conversion" data-node="document-conversion">Document Conversion</a></li><li><a href="overview.html#wiki" data-node="wiki">Wiki</a></li></ol></li><li><a href="overview.html#motivation" data-node="motivation">Motivation</a></li></ol></li><li><a href="formats.html" data-node="formats">Formats</a><ol><li><a href="formats.html#existing-formats" data-node="existing-formats">Existing Formats</a><ol><li><a href="formats.html#scriba" data-node="scriba">Scriba
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></a><ol><li><a href="formats.html#emacs-mode" data-node="emacs-mode">Emacs Mode</a></li></ol></li><li><a href="formats.html#vertex" data-node="vertex">VerTeX</a></li></ol></li><li><a href="formats.html#defining-formats" data-node="defining-formats">Defining Formats</a><ol><li><a href="formats.html#api" data-node="api">API</a></li><li><a href="formats.html#examples" data-node="examples">Examples</a></li></ol></li></ol></li><li><a href="nodes.html" data-node="nodes">Nodes</a><ol><li><a href="nodes.html#metadata" data-node="metadata">Metadata</a></li><li><a href="nodes.html#basic-classes" data-node="basic-classes">Basic Classes</a></li><li><a href="nodes.html#inline-nodes" data-node="inline-nodes">Inline Nodes</a></li><li><a href="nodes.html#code" data-node="code">Code</a></li><li><a href="nodes.html#quotes" data-node="quotes">Quotes</a></li><li><a href="nodes.html#links" data-node="links">Links</a></li><li><a href="nodes.html#lists" data-node="lists">Lists</a></li><li><a href="nodes.html#images-&-figures" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="nodes.html#tables" data-node="tables">Tables</a></li><li><a href="nodes.html#constructors" data-node="constructors">Constructors</a></li><li><a href="nodes.html#0-examples" data-node="0-examples">Examples</a></li></ol></li><li><a href="defining-nodes.html" data-node="defining-nodes">Defining Nodes</a><ol><li><a href="defining-nodes.html#1-api" data-node="1-api">API</a></li></ol></li><li><a href="operations.html" data-node="operations">Operations</a><ol><li><a href="document-traversal.html" data-node="document-traversal">Document Traversal</a><ol><li><a href="2-examples.html" data-node="2-examples">Examples</a></li></ol></li><li><a href="extraction.html" data-node="extraction">Extraction</a><ol><li><a href="3-examples.html" data-node="3-examples">Examples</a></li></ol></li><li><a href="filling-references.html" data-node="filling-references">Filling References</a></li><li><a href="table-of-contents.html" data-node="table-of-contents">Table of Contents</a><ol><li><a href="4-examples.html" data-node="4-examples">Examples</a></li></ol></li><li><a href="equality.html" data-node="equality">Equality</a></li></ol></li><li><a href="files.html" data-node="files">Files</a><ol><li><a href="5-api.html" data-node="5-api">API</a></li><li><a href="6-examples.html" data-node="6-examples">Examples</a></li></ol></li><li><a href="errors.html" data-node="errors">Errors</a></li><li><a href="libraries.html" data-node="libraries">Libraries</a><ol><li><a href="codex.html" data-node="codex">Codex</a></li><li><a href="commonhtml.html" data-node="commonhtml">CommonHTML</a><ol><li><a href="7-examples.html" data-node="7-examples">Examples</a></li></ol></li><li><a href="thorn.html" data-node="thorn">Thorn</a><ol><li><a href="8-examples.html" data-node="8-examples">Examples</a></li></ol></li><li><a href="pandocl.html" data-node="pandocl">Pandocl</a><ol><li><a href="9-examples.html" data-node="9-examples">Examples</a></li></ol></li></ol></li><li><a href="extensions.html" data-node="extensions">Extensions</a><ol><li><a href="plotting-with-gnuplot.html" data-node="plotting-with-gnuplot">Plotting with gnuplot</a><ol><li><a href="10-api.html" data-node="10-api">API</a></li><li><a href="11-examples.html" data-node="11-examples">Examples</a></li></ol></li><li><a href="include-files.html" data-node="include-files">Include Files</a><ol><li><a href="12-api.html" data-node="12-api">API</a></li><li><a href="13-examples.html" data-node="13-examples">Examples</a></li></ol></li><li><a href="split-paragraphs.html" data-node="split-paragraphs">Split Paragraphs</a><ol><li><a href="14-api.html" data-node="14-api">API</a></li><li><a href="15-examples.html" data-node="15-examples">Examples</a></li></ol></li><li><a href="tex.html" data-node="tex">TeX</a><ol><li><a href="16-api.html" data-node="16-api">API</a></li><li><a href="17-examples.html" data-node="17-examples">Examples</a></li></ol></li></ol></li><li><a href="future-work.html" data-node="future-work">Future Work</a></li></ol>
     </aside>
     <main class="codex-section">
-      <p></p><p>CommonDoc has a macro, <code>define-node</code>, which is exactly like <code>defclass</code> but
-with a few minor extensions to define CommonDoc nodes. These are the
-<code>:tag-name</code> class option and the <code>:attribute-name</code> slot option.</p><p>In a language with a regular syntax, like Scriba or VerTeX, where all syntactic
-structures have an explicit name and optionally an attribute list, these allow
-the parser and emitter to associate these with CommonDoc nodes, my mapping a
-string (The <code>:tag-name</code>) in the text to a class. This way, macro nodes can be
-parsed without actually modifying the parser of any of these formats.</p><p>Markdown, Textile, and other formats that <i>explicitly</i> map specific syntaxes
+      <p>CommonDoc allows the user to define new nodes through the use of
+<code>define-node</code>, which is similar to <code>defclass</code> with the addition of the
+:tag-name class option and the <code>:attribute-name</code> slot option.</p><p>In a language with a regular syntax, like Scriba or VerTeX, all syntactic
+structures have an explicit name and optionally an attribute list. This allows
+the parser and emitter to associate these structures with CommonDoc nodes, by
+mapping a string (the <code>:tag-name</code>) in the text to a class. This approach
+allows macro nodes to be parsed without actually modifying the parser of any of
+these formats.</p><p>Markdown, Textile, and other formats that <i>explicitly</i> map specific syntaxes
 to specific nodes won't benefit from these extensions, since for every node you
 want to support you have to modify both parser and emitter to add a new
 syntactic construct that creates it.</p><p>For example, Codex defines the following macro nodes:</p><pre><code class="lisp">(define-node cl-doc (macro-node)
   ()
   (:tag-name &quot;cl:doc&quot;)
-  (:documentation &quot;Insert documentation of a node.&quot;))
-
-(define-node with-package (macro-node)
+  (:documentation &quot;Insert documentation of a node.&quot;))(define-node with-package (macro-node)
   ((name :reader package-macro-name
          :type string
          :attribute-name &quot;name&quot;
@@ -52,9 +80,16 @@ syntactic construct that creates it.</p><p>For example, Codex defines the follow
   ()
   (:tag-name &quot;cl:spec&quot;)
   (:documentation &quot;Add a link to the Common Lisp HyperSpec.&quot;))
-</code></pre><p></p><p>This means that, if there's a Scriba file with the text:</p><pre><code class=NIL>... the parameter @cl:param(array) is the array of elements which...
-</code></pre><p></p><p>The <code>cl:param</code> tag will be parsed into the <code>param</code> macro node. This doesn't
-require modifying the source code of the Scriba parser.</p><h1 id="27-api">API</h1><div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">define-node</code><code class="codex-lambda-list">(name (&amp;rest superclasses) slots &amp;rest class-options)</code><div class="codex-docstring">Define a CommonDoc node.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-node</code><code class="codex-lambda-list">(tag-name)</code><div class="codex-docstring">Find a node class by its tag name.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-tag</code><code class="codex-lambda-list">(class)</code><div class="codex-docstring">Return a node class' tag name.</div></div><div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-special-slots</code><code class="codex-lambda-list">(class)</code><div class="codex-docstring">Return a node class' special slots.</div></div>
+
+</code></pre><p>This means that, if there's a Scriba file with the text:</p><pre><code class=NIL>... the parameter @cl:param(array) is the array of elements which...
+
+</code></pre><p>The <code>cl:param</code> tag will be parsed into the <code>param</code> macro node. This doesn't
+require modifying the source code of the Scriba parser.</p><h1 id="1-api">API</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">define-node</code><code class="codex-lambda-list">(name (&amp;rest superclasses) slots &amp;rest class-options)</code><div class="codex-docstring">Define a CommonDoc node.</div></div>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-node</code><code class="codex-lambda-list">(tag-name)</code><div class="codex-docstring">Find a node class by its tag name.</div></div>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-tag</code><code class="codex-lambda-list">(class)</code><div class="codex-docstring">Return a node class' tag name.</div></div>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">find-special-slots</code><code class="codex-lambda-list">(class)</code><div class="codex-docstring">Return a node class' special slots.</div></div>
+</p>
     </main>
   </article>
   <footer>

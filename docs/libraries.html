@@ -11,23 +11,50 @@
     
   <link rel="stylesheet" href="static/highlight.css"/>
   <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="libraries"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="libraries"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="libraries"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
 
   </head>
   <body>
     
   <h1 class="doc-title">CommonDoc » Libraries</h1>
-  <article>
+  <article id="article" data-section="libraries">
     <aside>
-      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#features" data-node="features">Features</a></li><li><a href="overview.html#use-cases" data-node="use-cases">Use Cases</a><ol><li><a href="overview.html#documentation" data-node="documentation">Documentation</a></li><li><a href="overview.html#document-conversion" data-node="document-conversion">Document Conversion</a></li><li><a href="overview.html#wiki" data-node="wiki">Wiki</a></li></ol></li><li><a href="overview.html#motivation" data-node="motivation">Motivation</a></li></ol></li><li><a href="formats.html" data-node="formats">Formats</a><ol><li><a href="formats.html#existing-formats" data-node="existing-formats">Existing Formats</a><ol><li><a href="formats.html#scriba" data-node="scriba">Scriba
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></a><ol><li><a href="formats.html#emacs-mode" data-node="emacs-mode">Emacs Mode</a></li></ol></li><li><a href="formats.html#vertex" data-node="vertex">VerTeX</a></li></ol></li><li><a href="formats.html#defining-formats" data-node="defining-formats">Defining Formats</a><ol><li><a href="formats.html#api" data-node="api">API</a></li><li><a href="formats.html#examples" data-node="examples">Examples</a></li></ol></li></ol></li><li><a href="nodes.html" data-node="nodes">Nodes</a><ol><li><a href="nodes.html#metadata" data-node="metadata">Metadata</a></li><li><a href="nodes.html#basic-classes" data-node="basic-classes">Basic Classes</a></li><li><a href="nodes.html#inline-nodes" data-node="inline-nodes">Inline Nodes</a></li><li><a href="nodes.html#code" data-node="code">Code</a></li><li><a href="nodes.html#quotes" data-node="quotes">Quotes</a></li><li><a href="nodes.html#links" data-node="links">Links</a></li><li><a href="nodes.html#lists" data-node="lists">Lists</a></li><li><a href="nodes.html#images-&-figures" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="nodes.html#tables" data-node="tables">Tables</a></li><li><a href="nodes.html#constructors" data-node="constructors">Constructors</a></li><li><a href="nodes.html#0-examples" data-node="0-examples">Examples</a></li></ol></li><li><a href="defining-nodes.html" data-node="defining-nodes">Defining Nodes</a><ol><li><a href="defining-nodes.html#1-api" data-node="1-api">API</a></li></ol></li><li><a href="operations.html" data-node="operations">Operations</a><ol><li><a href="operations.html#document-traversal" data-node="document-traversal">Document Traversal</a><ol><li><a href="operations.html#2-examples" data-node="2-examples">Examples</a></li></ol></li><li><a href="operations.html#extraction" data-node="extraction">Extraction</a><ol><li><a href="operations.html#3-examples" data-node="3-examples">Examples</a></li></ol></li><li><a href="operations.html#filling-references" data-node="filling-references">Filling References</a></li><li><a href="operations.html#table-of-contents" data-node="table-of-contents">Table of Contents</a><ol><li><a href="operations.html#4-examples" data-node="4-examples">Examples</a></li></ol></li><li><a href="operations.html#equality" data-node="equality">Equality</a></li></ol></li><li><a href="files.html" data-node="files">Files</a><ol><li><a href="files.html#5-api" data-node="5-api">API</a></li><li><a href="files.html#6-examples" data-node="6-examples">Examples</a></li></ol></li><li><a href="errors.html" data-node="errors">Errors</a></li><li><a href="libraries.html" data-node="libraries">Libraries</a><ol><li><a href="libraries.html#codex" data-node="codex">Codex</a></li><li><a href="libraries.html#commonhtml" data-node="commonhtml">CommonHTML</a><ol><li><a href="libraries.html#7-examples" data-node="7-examples">Examples</a></li></ol></li><li><a href="libraries.html#thorn" data-node="thorn">Thorn</a><ol><li><a href="libraries.html#8-examples" data-node="8-examples">Examples</a></li></ol></li><li><a href="libraries.html#pandocl" data-node="pandocl">Pandocl</a><ol><li><a href="libraries.html#9-examples" data-node="9-examples">Examples</a></li></ol></li></ol></li><li><a href="extensions.html" data-node="extensions">Extensions</a><ol><li><a href="plotting-with-gnuplot.html" data-node="plotting-with-gnuplot">Plotting with gnuplot</a><ol><li><a href="10-api.html" data-node="10-api">API</a></li><li><a href="11-examples.html" data-node="11-examples">Examples</a></li></ol></li><li><a href="include-files.html" data-node="include-files">Include Files</a><ol><li><a href="12-api.html" data-node="12-api">API</a></li><li><a href="13-examples.html" data-node="13-examples">Examples</a></li></ol></li><li><a href="split-paragraphs.html" data-node="split-paragraphs">Split Paragraphs</a><ol><li><a href="14-api.html" data-node="14-api">API</a></li><li><a href="15-examples.html" data-node="15-examples">Examples</a></li></ol></li><li><a href="tex.html" data-node="tex">TeX</a><ol><li><a href="16-api.html" data-node="16-api">API</a></li><li><a href="17-examples.html" data-node="17-examples">Examples</a></li></ol></li></ol></li><li><a href="future-work.html" data-node="future-work">Future Work</a></li></ol>
     </aside>
     <main class="codex-section">
-      <h1 id="codex
---">Codex
-<img src="https://travis-ci.org/CommonDoc/codex.svg?branch=master"/><img src="https://coveralls.io/repos/CommonDoc/codex/badge.svg?branch=master"/></h1><a href="https://github.com/CommonDoc/codex"><b>Codex</b></a> is the documentation
-generator used to create this manual.<h1 id="commonhtml
---">CommonHTML
-<img src="https://travis-ci.org/CommonDoc/common-html.svg?branch=master"/><img src="https://coveralls.io/repos/CommonDoc/common-html/badge.svg?branch=master"/></h1><a href="https://github.com/CommonDoc/common-html"><b>CommonHTML</b></a> is
-CommonDoc's HTML parser and emitter.<h2 id="44-examples">Examples</h2><pre><code class="lisp">(defpackage html-example
+      <h1 id="codex">Codex</h1><p><img src="https://travis-ci.org/CommonDoc/codex.svg?branch=master"/>
+<img src="https://coveralls.io/repos/CommonDoc/codex/badge.svg?branch=master"/></p><p><a href="https://github.com/CommonDoc/codex"><b>Codex</b></a> is the documentation
+generator used to create this manual.</p><h1 id="commonhtml">CommonHTML</h1><p><img src="https://travis-ci.org/CommonDoc/common-html.svg?branch=master"/>
+<img src="https://coveralls.io/repos/CommonDoc/common-html/badge.svg?branch=master"/></p><p><a href="https://github.com/CommonDoc/common-html"><b>CommonHTML</b></a> is
+CommonDoc's HTML parser and emitter.</p><h2 id="7-examples">Examples</h2><pre><code class="lisp">(defpackage html-example
   (:use :cl :common-doc))
 (in-package :html-example)
 
@@ -79,30 +106,28 @@ CommonDoc's HTML parser and emitter.<h2 id="44-examples">Examples</h2><pre><code
     &lt;/dl&gt;
   &lt;/body&gt;
 &lt;/html&gt;&quot;
-</code></pre><h1 id="thorn
--">Thorn
-<img src="https://travis-ci.org/CommonDoc/thorn.svg?branch=master"/></h1><p><a href="https://github.com/CommonDoc/thorn"><b>Thorn</b></a> is a library for
+</code></pre><h1 id="thorn">Thorn</h1><p><img src="https://travis-ci.org/CommonDoc/thorn.svg?branch=master"/></p><p><a href="https://github.com/CommonDoc/thorn"><b>Thorn</b></a> is a library for
 inserting special characters into CommonDoc documents.</p><p>Most input methods allow the user to insert characters in different alphabets
 and accented or modified versions of the same, but these are different for
 everyone and often the user will end up looking up a character by name.</p><p>Thorn is a tool for inserting Unicode characters by an ASCII name, the way TeX
 allows users to insert the letters α and β with the commands
 <code>\alpha</code> and <code>\beta</code>, respectively.</p><p>Simply put, it defines a macro, <code>l</code>, that maps a string to a Unicode
-character.</p><h2 id="46-examples">Examples</h2><p></p><p>The following Scriba input:</p><pre><code class="scribe">Hw@l(ae)t! We Gardena in geardagum,
+character.</p><h2 id="8-examples">Examples</h2><p>The following Scriba input:</p><pre><code class="scribe">Hw@l(ae)t! We Gardena in geardagum,
 
 @l(th)eodcyninga, @l(th)rym gefrunon,
 
 hu @l(eth)a @l(ae)þelingas ellen fremedon.
 
 Oft Scyld Scefing scea@l(th)ena @l(th)reatum,
-</code></pre><p></p><p>Produces the first lines of
+
+</code></pre><p>Produces the first lines of
 <a href="http://www.sacred-texts.com/neu/asbeo.htm"><q>Beowulf</q></a> in
-Anglo-Saxon:</p><blockquote><p>
-Hwæt! We Gardena in geardagum,</p><p>
+Anglo-Saxon:</p><blockquote><p>Hwæt! We Gardena in geardagum,</p><p>
 þeodcyninga, þrym gefrunon,</p><p>
 hu ða æþelingas ellen fremedon.</p><p>
 Oft Scyld Scefing sceaþena þreatum,
-</p></blockquote><h1 id="pandocl">Pandocl</h1><a href="https://github.com/CommonDoc/pandocl"><b>Pandocl</b></a> is an easy to use
-document converter, meant as a simple interface to CommonDoc.<h2 id="48-examples">Examples</h2><pre><code class="lisp">CL-USER&gt; (pandocl:convert #p&quot;input.tex&quot; #p&quot;output.html&quot;)
+</p></blockquote><h1 id="pandocl">Pandocl</h1><p><a href="https://github.com/CommonDoc/pandocl"><b>Pandocl</b></a> is an easy to use
+document converter, meant as a simple interface to CommonDoc.</p><h2 id="9-examples">Examples</h2><pre><code class="lisp">CL-USER&gt; (pandocl:convert #p&quot;input.tex&quot; #p&quot;output.html&quot;)
 #&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
 
 CL-USER&gt; (pandocl:emit #p&quot;input.tex&quot; #p&quot;output.html&quot;
@@ -121,6 +146,7 @@ CL-USER&gt; (pandocl:emit doc #p&quot;path/to/output.html&quot;)
 
 CL-USER&gt; (pandocl:emit doc #p&quot;path/to/output.html&quot; :format :html)
 #&lt;COMMON-DOC:DOCUMENT &quot;My Document&quot;&gt;
+
 </code></pre>
     </main>
   </article>

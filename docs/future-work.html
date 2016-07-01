@@ -11,25 +11,51 @@
     
   <link rel="stylesheet" href="static/highlight.css"/>
   <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="future-work"] {
+       color: #AD3108;
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc > ol {
+       display: block;
+   }
+
+   .toc li a[data-node="future-work"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="future-work"] + ol li {
+       font-size: 16px;
+       margin: 0 10px;
+   }
+
+   .toc li a[active] + ol li:first-child {
+       margin-top: 5px;
+   }
+  </style>
 
   </head>
   <body>
     
   <h1 class="doc-title">CommonDoc » Future Work</h1>
-  <article>
+  <article id="article" data-section="future-work">
     <aside>
-      <ol class="toc"><li><a href="overview.html">Overview</a></li><li><a href="formats.html">Formats</a></li><li><a href="nodes.html">Nodes</a></li><li><a href="defining-nodes.html">Defining Nodes</a></li><li><a href="operations.html">Operations</a></li><li><a href="files.html">Files</a></li><li><a href="errors.html">Errors</a></li><li><a href="libraries.html">Libraries</a></li><li><a href="extensions.html">Extensions</a></li><li><a href="future-work.html">Future Work</a></li></ol>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#features" data-node="features">Features</a></li><li><a href="overview.html#use-cases" data-node="use-cases">Use Cases</a><ol><li><a href="overview.html#documentation" data-node="documentation">Documentation</a></li><li><a href="overview.html#document-conversion" data-node="document-conversion">Document Conversion</a></li><li><a href="overview.html#wiki" data-node="wiki">Wiki</a></li></ol></li><li><a href="overview.html#motivation" data-node="motivation">Motivation</a></li></ol></li><li><a href="formats.html" data-node="formats">Formats</a><ol><li><a href="formats.html#existing-formats" data-node="existing-formats">Existing Formats</a><ol><li><a href="formats.html#scriba" data-node="scriba">Scriba
+<img src="https://travis-ci.org/CommonDoc/scriba.svg?branch=master"/></a><ol><li><a href="formats.html#emacs-mode" data-node="emacs-mode">Emacs Mode</a></li></ol></li><li><a href="formats.html#vertex" data-node="vertex">VerTeX</a></li></ol></li><li><a href="formats.html#defining-formats" data-node="defining-formats">Defining Formats</a><ol><li><a href="formats.html#api" data-node="api">API</a></li><li><a href="formats.html#examples" data-node="examples">Examples</a></li></ol></li></ol></li><li><a href="nodes.html" data-node="nodes">Nodes</a><ol><li><a href="nodes.html#metadata" data-node="metadata">Metadata</a></li><li><a href="nodes.html#basic-classes" data-node="basic-classes">Basic Classes</a></li><li><a href="nodes.html#inline-nodes" data-node="inline-nodes">Inline Nodes</a></li><li><a href="nodes.html#code" data-node="code">Code</a></li><li><a href="nodes.html#quotes" data-node="quotes">Quotes</a></li><li><a href="nodes.html#links" data-node="links">Links</a></li><li><a href="nodes.html#lists" data-node="lists">Lists</a></li><li><a href="nodes.html#images-&-figures" data-node="images-&-figures">Images &amp; Figures</a></li><li><a href="nodes.html#tables" data-node="tables">Tables</a></li><li><a href="nodes.html#constructors" data-node="constructors">Constructors</a></li><li><a href="nodes.html#0-examples" data-node="0-examples">Examples</a></li></ol></li><li><a href="defining-nodes.html" data-node="defining-nodes">Defining Nodes</a><ol><li><a href="defining-nodes.html#1-api" data-node="1-api">API</a></li></ol></li><li><a href="operations.html" data-node="operations">Operations</a><ol><li><a href="operations.html#document-traversal" data-node="document-traversal">Document Traversal</a><ol><li><a href="operations.html#2-examples" data-node="2-examples">Examples</a></li></ol></li><li><a href="operations.html#extraction" data-node="extraction">Extraction</a><ol><li><a href="operations.html#3-examples" data-node="3-examples">Examples</a></li></ol></li><li><a href="operations.html#filling-references" data-node="filling-references">Filling References</a></li><li><a href="operations.html#table-of-contents" data-node="table-of-contents">Table of Contents</a><ol><li><a href="operations.html#4-examples" data-node="4-examples">Examples</a></li></ol></li><li><a href="operations.html#equality" data-node="equality">Equality</a></li></ol></li><li><a href="files.html" data-node="files">Files</a><ol><li><a href="files.html#5-api" data-node="5-api">API</a></li><li><a href="files.html#6-examples" data-node="6-examples">Examples</a></li></ol></li><li><a href="errors.html" data-node="errors">Errors</a></li><li><a href="libraries.html" data-node="libraries">Libraries</a><ol><li><a href="libraries.html#codex" data-node="codex">Codex</a></li><li><a href="libraries.html#commonhtml" data-node="commonhtml">CommonHTML</a><ol><li><a href="libraries.html#7-examples" data-node="7-examples">Examples</a></li></ol></li><li><a href="libraries.html#thorn" data-node="thorn">Thorn</a><ol><li><a href="libraries.html#8-examples" data-node="8-examples">Examples</a></li></ol></li><li><a href="libraries.html#pandocl" data-node="pandocl">Pandocl</a><ol><li><a href="libraries.html#9-examples" data-node="9-examples">Examples</a></li></ol></li></ol></li><li><a href="extensions.html" data-node="extensions">Extensions</a><ol><li><a href="extensions.html#plotting-with-gnuplot" data-node="plotting-with-gnuplot">Plotting with gnuplot</a><ol><li><a href="extensions.html#10-api" data-node="10-api">API</a></li><li><a href="extensions.html#11-examples" data-node="11-examples">Examples</a></li></ol></li><li><a href="extensions.html#include-files" data-node="include-files">Include Files</a><ol><li><a href="extensions.html#12-api" data-node="12-api">API</a></li><li><a href="extensions.html#13-examples" data-node="13-examples">Examples</a></li></ol></li><li><a href="extensions.html#split-paragraphs" data-node="split-paragraphs">Split Paragraphs</a><ol><li><a href="extensions.html#14-api" data-node="14-api">API</a></li><li><a href="extensions.html#15-examples" data-node="15-examples">Examples</a></li></ol></li><li><a href="extensions.html#tex" data-node="tex">TeX</a><ol><li><a href="extensions.html#16-api" data-node="16-api">API</a></li><li><a href="extensions.html#17-examples" data-node="17-examples">Examples</a></li></ol></li></ol></li><li><a href="future-work.html" data-node="future-work">Future Work</a></li></ol>
     </aside>
     <main class="codex-section">
-      <dl><dt>LaTeX Backend</dt><dd>
-This is essential for producing PDFs without actually having to write a PDF file
+      <dl><dt>LaTeX Backend</dt><dd>This is essential for producing PDFs without actually having to write a PDF file
 directly. The problem is it requires the user to have a TeX engine installed.
-</dd><dt>Classes to represent mathematics</dt><dd>
-A format-independent syntax should be introduced, along with translators that
+</dd><dt>Classes to represent mathematics</dt><dd>A format-independent syntax should be introduced, along with translators that
 convert it to TeX, MathML, et cetera. The CommonDoc macro system could be used
 to define mathematics-specific macros.
-</dd><dt>Wiki</dt><dd>
-A wiki built on top of CommonDoc, with a web front-end and filesystem storage.
+</dd><dt>Wiki</dt><dd>A wiki built on top of CommonDoc, with a web front-end and filesystem storage.
 </dd></dl>
     </main>
   </article>
