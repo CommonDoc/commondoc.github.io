@@ -8,7 +8,7 @@
   Defining Nodes &ndash; CommonDoc
 </title>
     <link rel="stylesheet" href="static/style.css"/>
-    
+    by
   <link rel="stylesheet" href="static/highlight.css"/>
   <script src="static/highlight.js"></script>
 
@@ -25,7 +25,7 @@
 with a few minor extensions to define CommonDoc nodes. These are the
 <code>:tag-name</code> class option and the <code>:attribute-name</code> slot option.</p><p>In a language with a regular syntax, like Scriba or VerTeX, where all syntactic
 structures have an explicit name and optionally an attribute list, these allow
-the parser and emitter to associate these with CommonDoc nodes, my mapping a
+the parser and emitter to associate these with CommonDoc nodes, by mapping a
 string (The <code>:tag-name</code>) in the text to a class. This way, macro nodes can be
 parsed without actually modifying the parser of any of these formats.</p><p>Markdown, Textile, and other formats that <i>explicitly</i> map specific syntaxes
 to specific nodes won't benefit from these extensions, since for every node you
